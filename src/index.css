@@ -1,13 +1,97 @@
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+  scroll-behavior: smooth;
+}
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: "Croissant One", sans-serif;
+}
+::-webkit-scrollbar {
+  width: 5px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.overlay-slick-hero {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to right,
+    theme("colors.dark") 0%,
+    transparent 60%,
+    theme("colors.dark")
+  );
+}
+
+.overlay-film-cover {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 5%,
+    theme("colors.black", "colors.dark")
+  );
+}
+.toggle {
+  border-bottom: 2px solid theme("colors.primary");
+
+  width: 45px;
+  height: 35px;
+  border-radius: 30%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+
+  line-height: 1;
+}
+
+.input {
+  display: none;
+}
+
+.icon {
+  grid-column: 1 / 1;
+  grid-row: 1 / 1;
+  transition: transform 500ms;
+}
+
+.icon--moon {
+  transition-delay: 200ms;
+  color: white;
+}
+
+.icon--sun {
+  color: orange;
+  transform: scale(0);
+}
+
+#switch:checked + .icon--moon {
+  transform: rotate(360deg) scale(0);
+}
+
+#switch:checked ~ .icon--sun {
+  transition-delay: 200ms;
+  transform: scale(1) rotate(360deg);
 }
