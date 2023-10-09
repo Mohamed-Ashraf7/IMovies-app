@@ -8,7 +8,6 @@ interface Props extends customProps {
   onTitleClick?: () => void;
   hidden?: boolean;
 }
-
 const Section = (props: Props) => {
   if (props.hidden) return <></>;
   return (
@@ -17,7 +16,7 @@ const Section = (props: Props) => {
         <h1
           onClick={props.onTitleClick}
           className={mergeClasses(
-            "text-4xl px-3 py-2 my-4  border-b-4  border-primary ",
+            "text-4xl mobile:text-3xl px-2 py-2 my-4  border-b-4 border-primary ",
             props.onTitleClick ? "cursor-pointer hover:text-primary" : ""
           )}
           dangerouslySetInnerHTML={{

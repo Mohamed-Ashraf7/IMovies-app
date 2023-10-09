@@ -1,34 +1,38 @@
 @import "slick-carousel/slick/slick.css";
 @import "slick-carousel/slick/slick-theme.css";
 .slick-prev {
-  left: -50px;
+  left: -40px;
   z-index: 10;
 }
-
 .slick-next {
-  right: -50px;
+  right: -40px;
   z-index: 10;
 }
-
+@media (max-width: 795px) {
+  .slick-prev {
+    left: -22px;
+    z-index: 10;
+  }
+  .slick-next {
+    right: -22px;
+    z-index: 10;
+  }
+}
 .slick-hero .slick-prev {
-  left: 25px;
+  left: 15px;
 }
-
 .slick-hero .slick-next {
-  right: 25px;
+  right: 15px;
 }
-
 .slick-prev,
 .slick-next {
-  background-color: #333;
   font-size: 18px;
-  width: 50px;
-  height: 50px;
+  width: 35px;
+  height: 35px;
   border-radius: 10%;
   opacity: 0.8;
   transition: background-color 0.3s, color 0.3s;
 }
-
 .slick-prev:hover,
 .slick-next:hover {
   background-color: #555;

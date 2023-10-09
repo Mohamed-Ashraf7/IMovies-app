@@ -1,11 +1,9 @@
 import { customProps } from "../Interfaces";
 import { mergeClasses } from "../utilies";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 
 interface Props extends customProps {
   src: string;
 }
-
 const Image = (props: Props) => {
   return (
     <div
@@ -14,11 +12,11 @@ const Image = (props: Props) => {
         props.className
       )}
     >
-      <LazyLoadImage
-        alt=""
+      <img
+        alt={props.src}
         src={props.src}
         className="w-full h-full object-cover"
-      ></LazyLoadImage>
+      />
     </div>
   );
 };

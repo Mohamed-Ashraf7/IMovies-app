@@ -18,11 +18,10 @@ export function useTheme() {
   return context;
 }
 
-export const ThemeProvider = ({ children }: {children:ReactNode }) => {
+export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setTheme] = useState<Theme>("light");
 
   const toggleTheme = () => {
-    console.log("theme" + theme);
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   };
 

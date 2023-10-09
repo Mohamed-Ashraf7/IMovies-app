@@ -19,6 +19,8 @@ import googleLogo from "../assets/icons8-google-48.png";
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const [confirmPass, setConfirmPass] = useState("");
+  const [passwordError, setPasswordError] = useState("");
   const [fullname, setFullName] = useState("");
   const [error, setError] = useState<string>("");
   const [signedIn, setSignedIn] = useState(false);
@@ -55,16 +57,19 @@ const SignUp = () => {
   };
   const formValidation = useCallback(() => {
     if (
-      !isEmailValid(email) ||
-      email.length === 0 ||
-      pass.length < 5 ||
-      fullname.length === 0
+      (!isEmailValid(email) ||
+        email.length === 0 ||
+        pass.length < 5 ||
+        fullname.length === 0,
+      pass !== confirmPass)
     ) {
       setIsDisabled(true);
+      setPasswordError("Password don't match");
     } else {
       setIsDisabled(false);
+      setPasswordError("");
     }
-  }, [email, pass.length, fullname.length]);
+  }, [email, fullname.length, confirmPass, pass]);
 
   function signUp(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
@@ -82,7 +87,6 @@ const SignUp = () => {
                 uid: user.uid,
               });
             } else {
-              // Handle the case where user login fails
               window.alert("Unknown error occurred, try again?");
             }
           });
@@ -94,13 +98,6 @@ const SignUp = () => {
       formValidation();
     }
   }
-
-  const handleUser = async () => {
-    try {
-      await signOut(auth);
-      navigate("/Login");
-    } catch (error) {}
-  };
   const signInWithGoogle = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
@@ -128,15 +125,13 @@ const SignUp = () => {
       className=" flex items-center relative mobile:justify-center px-2 justify-start min-h-screen md:py-2"
       style={{
         backgroundImage: `url(${bg})`,
-        backgroundPosition: "center 80% ",
+        backgroundPosition: "center",
         backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        backgroundAttachment: "fixed",
       }}
     >
       <main className="flex  items-center justify-center  lg:px-10 px-2 overflow-hidden ">
-        <form className="bg-primary text-white shadow-lg shadow-black flex flex-col lg:w-[450px]  w-screen  h-[570px] justify-center items-center px-3 ">
-          <Link to={"/*"} className="my-4 mt-8 text-4xl font-bold text-white">
+        <form className="bg-primary text-white shadow-lg shadow-black flex flex-col lg:w-[450px]  w-screen  h-[570px] mobile:h-[600px] justify-center items-center px-3 ">
+          <Link to={"/*"} className="my-4 mt-7 text-4xl font-bold text-white">
             I Movies
           </Link>
           <p>Create An Account</p>
@@ -157,7 +152,7 @@ const SignUp = () => {
             name="fullname"
             onChange={(e) => setFullName(e.target.value)}
             placeholder="Enter your full name"
-            className="rounded-sm font-serif mt-4 text-black focus:shadow-black px-2 py-2 min-w-[280px] m-2 shadow-sm  focus:border-primary  focus:outline-none"
+            className="rounded-sm font-serif mt-4 text-black  shadow-black px-2 py-2 min-w-[280px] m-2 shadow-sm  focus:border-primary  focus:outline-none"
             required
           />
           <input
@@ -165,7 +160,7 @@ const SignUp = () => {
             name="email"
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter email address"
-            className="rounded-sm text-black font-serif focus:shadow-black px-2 py-2 min-w-[280px] m-2 shadow-sm  focus:border-primary  focus:outline-none"
+            className="rounded-sm text-black font-serif  shadow-black px-2 py-2 min-w-[280px] m-2 shadow-sm  focus:border-primary  focus:outline-none"
             required
           />
           <input
@@ -173,9 +168,18 @@ const SignUp = () => {
             name="password"
             onChange={(e) => setPass(e.target.value)}
             placeholder="Enter your password"
-            className="rounded-sm text-black font-serif focus:shadow-black px-2 py-2 min-w-[280px] m-2 shadow-sm  focus:border-primary  focus:outline-none"
+            className="rounded-sm text-black font-serif  shadow-black px-2 py-2 min-w-[280px] m-2 shadow-sm  focus:border-primary  focus:outline-none"
             required
           />
+          <input
+            type="password"
+            name="confirmpassword"
+            onChange={(e) => setConfirmPass(e.target.value)}
+            placeholder="Enter your password again"
+            className="rounded-sm text-black font-serif  shadow-black px-2 py-2 min-w-[280px] m-2 shadow-sm  focus:border-primary  focus:outline-none"
+            required
+          />
+          {passwordError && <p className="text-black">{passwordError}</p>}
           <button
             onClick={signUp}
             type="submit"
@@ -184,17 +188,17 @@ const SignUp = () => {
               isDisabled
                 ? "cursor-not-allowed bg-black"
                 : " text-gray-200 bg-blue-600"
-            } m-3 text-white  w-2/4 rounded-md px-4 py-3 shadow-md  transition duration-200 ease-in"`}
+            } m-3 text-white  w-2/4 rounded-sm px-4 py-3 shadow-sm shadow-black transition duration-200 ease-in"`}
           >
             Start Binging 🍿🍾
           </button>
           <Link
             to="/Login"
-            className="text-white hover:text-black my-2 text-sm font-medium cursor-pointer"
+            className="text-white hover:text-black my-1 text-sm font-medium cursor-pointer"
           >
             Have an account ? Login
           </Link>
-          <div className="mx-auto my-5 h-[0.5px] w-full border-t-2 border-zinc-100 md:w-80">
+          <div className="mx-auto my-4 h-[0.5px] w-full border-t-2 border-zinc-100 md:w-80">
             <p className="mx-auto flex items-center justify-center -mt-[20px] h-9 w-12  bg-blue-500 rounded-md text-sm ">
               OR
             </p>
@@ -205,7 +209,7 @@ const SignUp = () => {
             className="mx-auto my-2 rounded-md  border-white border-b-2 mb-4 flex h-12 w-full items-center justify-center  bg-white font-bold outline-none md:w-60 hover:bg-gray-300"
           >
             {" "}
-            <p className="mr-4 text-sm my-2 font-semibold text-gray-800 ">
+            <p className="mr-4 text-sm my-1 font-semibold text-gray-800 ">
               Sign in with Google
             </p>
             <img src={googleLogo} alt="google" className="h-7 w-7" />
@@ -248,7 +252,7 @@ const SignUp = () => {
           <div className=" text-4xl text-white flex mobile:text-xl rounded-md flex-col items-center  gap-y-4 bg-[#00695c] opacity-[.96] shadow-black shadow-md absolut  py-20 px-5 text-center ">
             Signed up successfully! <BiSolidUserCheck size={40} />
             <button
-              onClick={() => handleUser()}
+              onClick={() => navigate("/*")}
               className="rounded-lg shadow-md shadow-black block border-none text-black bg-white px-7 py-4 text-md font-extrabold transition-all delay-[1] ease-in hover:scale-110 hover:shadow-2xl hover:shadow-teal-500 mobile:px-8 mobile:py-5 mobile:text-lg mt-4"
             >
               Next

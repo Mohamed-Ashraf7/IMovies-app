@@ -85,12 +85,12 @@ const Home = () => {
       )}
       {/*******************  trendings *********************/}
       <div
-        className="py-0 min-h-screen -mt-[87px]"
+        className="py-0 min-h-screen -mt-[88px]"
         hidden={trendings.length === 0}
         title="Trending"
       >
         <Slider
-          className="slick-hero "
+          className="slick-hero"
           autoplay={true}
           slidesToShow={1}
           slidesToScroll={1}
@@ -113,7 +113,7 @@ const Home = () => {
         </Slider>
       </div>
       {/*********** in theaters *************************/}
-      <p className="text-center   shadow-md py-2 -mb-5 text-4xl my-2">
+      <p className="text-center  shadow-md py-2 mb-2 text-4xl my-1">
         Let's Find World Best Movies
       </p>
       <Section title="In Theaters" hidden={inTheaters.length === 0}>

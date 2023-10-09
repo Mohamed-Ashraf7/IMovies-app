@@ -24,7 +24,7 @@ export const Slider = (props: Props) => {
       slidesToScroll: 1,
       responsive: [
         {
-          breakpoint: 600,
+          breakpoint: 900,
           settings: {
             slidesToShow: 2,
             slidesToScroll: 2,
@@ -40,9 +40,7 @@ export const Slider = (props: Props) => {
       ],
     };
   }
-
   const [onSwipe, setOnSwipe] = useState(false);
-
   return (
     <Slick
       autoplay={false}

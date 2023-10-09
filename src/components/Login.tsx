@@ -100,10 +100,8 @@ const Login = () => {
       className="flex items-center relative justify-end mobile:justify-center min-h-screen md:py-2"
       style={{
         backgroundImage: `linear-gradient(270deg, #000, #0005) , url(${bg})`,
-        backgroundPosition: "center 60%",
+        backgroundPosition: "center",
         backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        backgroundAttachment: "fixed",
       }}
     >
       <main className="flex items-center justify-center  px-2 overflow-hidden md:px-10">

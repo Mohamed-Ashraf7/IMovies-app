@@ -5,9 +5,9 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 const Footer = () => {
   return (
     <footer
-      className="py-20 px-16 mobile:pt-5  mobile:pb-20 flex justify-center items-center"
+      className="py-16 px-16 mobile:pt-5  mobile:pb-20 flex justify-center items-center"
       style={{
-        backgroundImage: `linear-gradient(270deg, #000, #0009) , url(${bg_footer})`,
+        backgroundImage: `linear-gradient(270deg,#000,#0009) , url(${bg_footer})`,
         backgroundPosition: "100% 10%",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",

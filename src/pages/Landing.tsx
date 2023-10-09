@@ -15,17 +15,16 @@ export function Landing() {
       <div
         style={{
           backgroundImage: `linear-gradient(270deg, #000, #0005) , url(${bg1})`,
-          backgroundPosition: "center 70% ",
+          backgroundPosition: "center",
           backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
           backgroundAttachment: "fixed",
         }}
         className="flex min-h-screen relative w-full flex-col items-center justify-center bg-cover px-10 pt-4 mobile:-mt-16 ease-in-out"
       >
-        <h2 className="text-5xl border-b-[6px] rounded-md py-2 border-primary font-extrabold mobile:text-center leading-snug text-white md:text-5xl">
-          Bring unlimited Movies,TV Shows and more
+        <h2 className="text-3xl md:text-5xl border-b-[6px] rounded-md py-2 border-primary font-extrabold mobile:text-center leading-snug text-white ">
+          Bring unlimited Movies , TV Shows and more
         </h2>
-        <p className="my-12 text-3xl mobile:text-center">
+        <p className="my-12 md:text-3xl text-2xl  mobile:text-center">
           Watch Anywhere. Anytime. On any device
         </p>
         <button

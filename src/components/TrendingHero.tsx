@@ -42,18 +42,16 @@ export const TrendingHero = (props: Props) => {
           src={tmdbImageSrc(props.film.posterPath)}
           className="max-w-[320px] mobile:max-w-[200px] h-[300px]   mobile:mx-auto shadow-xl shadow-neutral-700"
         ></Image>
-
-        <div className="mobile:flex mobile:items-center flex justify-center flex-col">
-          <p className="text-3xl lg:text-7xl  text-white border-b-2 text-center border-primary my-4 py-2 ">
+        <div className="mobile:flex mobile:items-center gap-y-1 flex justify-center flex-col">
+          <p className="text-3xl lg:text-7xl mobile:px-2 text-white border-b-2 text-start border-primary my-4 py-3 ">
             {props.film.title}
           </p>
-          <p className="text-lg mobile:text-md text-white mobile:text-center">
+          <p className="text-lg mobile:text-md text-white mobile:text-center mobile:px-2">
             {shortenedOverview}
           </p>
-          <p className="text-2xl mobile:text-md text-white bg-orange-400 rounded-full p-1 w-fit">
+          <p className="text-2xl mobile:text-md text-white bg-orange-400 rounded-full p-2 w-fit">
             {props.film.voteAverage.toFixed(1)}
           </p>
-
           <div className="flex flex-row items-center  my-2 text-2xl ">
             {[...Array(filledStars)].map((_, index) => (
               <FaStar key={index} className="star text-primary" />
@@ -64,7 +62,7 @@ export const TrendingHero = (props: Props) => {
             ))}
           </div>
           <button
-            className="px-3 py-1.5 font-croissant-one  text-xl justify-center my-4 flex items-center gap-3 bg-primary rounded-md hover:bg-red-900"
+            className="px-3 py-1.5 font-croissant-one text-xl justify-center my-4 flex items-center gap-3 bg-primary rounded-md hover:bg-red-900"
             onClick={(e) => {
               e.stopPropagation();
               props.onPlayTrailer();
