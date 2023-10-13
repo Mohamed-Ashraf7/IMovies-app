@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
+import Loading from "../components/Loading";
 import AuthGuard from "../components/AuthGuard";
 const Film = lazy(() => import("../pages/film"));
 const Login = lazy(() => import("../components/Login"));
@@ -8,7 +9,6 @@ const Landing = lazy(() => import("../pages/Landing"));
 const Home = lazy(() => import("../pages/Home"));
 const Catalog = lazy(() => import("../pages/Catalog"));
 const Season = lazy(() => import("../pages/Season"));
-const Loading = lazy(() => import("../components/Loading"));
 const Routing = () => {
   return (
     <Suspense fallback={<Loading />}>

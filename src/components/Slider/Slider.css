@@ -10,12 +10,10 @@
 }
 @media (max-width: 795px) {
   .slick-prev {
-    left: -22px;
-    z-index: 10;
+    left: -30px;
   }
   .slick-next {
-    right: -22px;
-    z-index: 10;
+    right: -30px;
   }
 }
 .slick-hero .slick-prev {
@@ -24,6 +22,7 @@
 .slick-hero .slick-next {
   right: 15px;
 }
+
 .slick-prev,
 .slick-next {
   font-size: 18px;

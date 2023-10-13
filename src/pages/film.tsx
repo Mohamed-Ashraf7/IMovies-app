@@ -93,7 +93,7 @@ const Film = (props: Props) => {
             className="max-w-[350px] h-[300px] mobile:h-full mobile:w-full mobile:mt-[4.5rem] mobile:mx-auto shadow-xl shadow-neutral-700 "
           ></Image>
           <div className="px-10 py-4  mobile:px-2 mobile:mx-0 flex flex-col items-start gap-y-3 mobile:border-none rounded-3xl  ">
-            <p className="text-5xl md:max-w-[700px]  my-1 line-clamp-2 mobile:text-3xl">
+            <p className="text-5xl md:max-w-[700px]  tracking-widest font-extrabold bg-gradient-to-r from-white via-orange-400 to-gray-400 bg-clip-text my-1 line-clamp-2 mobile:text-3xl">
               {film.title}
             </p>
             <p className="text-sm mb-2  text-zinc-400">{film.tagline}</p>

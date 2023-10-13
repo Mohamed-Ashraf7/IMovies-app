@@ -112,10 +112,8 @@ const Catalog = (props: Props) => {
         className="h-[300px]  left-0 right-0 -top-[88px] relative flex items-end py-10 justify-center"
         style={{
           backgroundImage: ` url(${bg})`,
-          backgroundPosition: "center 70%",
+          backgroundPosition: "center 60%",
           backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-          backgroundAttachment: "fixed",
         }}
       >
         <h2 className="text-5xl bg-opacity-10 mobile:text-2xl p-2 bg-white rounded-md text-white">

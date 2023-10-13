@@ -37,16 +37,16 @@ export const TrendingHero = (props: Props) => {
         <div className="overlay-film-cover"></div>
       </div>
       {/* text */}
-      <div className="flex lg:mt-10 md:flex-row flex-col gap-3  mobile:mt-20 items-center justify-between lg:gap-x-10 relative z-10 mx-1 max-w-[70%] mobile:max-w-[100%]">
+      <div className="flex lg:mt-12 md:flex-row flex-col gap-4  mobile:mt-20 items-center justify-between lg:gap-x-20 relative z-10 mx-1 max-w-[80%] mobile:max-w-[100%]">
         <Image
           src={tmdbImageSrc(props.film.posterPath)}
           className="max-w-[320px] mobile:max-w-[200px] h-[300px]   mobile:mx-auto shadow-xl shadow-neutral-700"
         ></Image>
-        <div className="mobile:flex mobile:items-center gap-y-1 flex justify-center flex-col">
-          <p className="text-3xl lg:text-7xl mobile:px-2 text-white border-b-2 text-start border-primary my-4 py-3 ">
+        <div className="mobile:flex md:mt-4 mobile:items-center gap-y-1 flex justify-center flex-col">
+          <p className="text-3xl mobile:text-center lg:text-5xl tracking-widest font-extrabold  bg-clip-text mobile:px-2  text-start my-2 py-3 ">
             {props.film.title}
           </p>
-          <p className="text-lg mobile:text-md text-white mobile:text-center mobile:px-2">
+          <p className="text-lg font-light mobile:text-md text-white mobile:text-center mobile:px-2">
             {shortenedOverview}
           </p>
           <p className="text-2xl mobile:text-md text-white bg-orange-400 rounded-full p-2 w-fit">
@@ -62,13 +62,13 @@ export const TrendingHero = (props: Props) => {
             ))}
           </div>
           <button
-            className="px-3 py-1.5 font-croissant-one text-xl justify-center my-4 flex items-center gap-3 bg-primary rounded-md hover:bg-red-900"
+            className="py-1 px-1 text-xl -ms-4 justify-center my-1 flex items-center gap-3 w-fit bg-transparent rounded-md hover:bg-red-900"
             onClick={(e) => {
               e.stopPropagation();
               props.onPlayTrailer();
             }}
           >
-            <MdPlayCircleOutline size={18}></MdPlayCircleOutline>
+            <MdPlayCircleOutline size={90}></MdPlayCircleOutline>
             <span>Play trailer</span>
           </button>
         </div>

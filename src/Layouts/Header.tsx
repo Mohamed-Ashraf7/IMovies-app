@@ -132,7 +132,7 @@ const Header = () => {
           className="
             flex
             mobile:border-t-2
-            mobile:border-primary
+          mobile:border-primary
             mobile:rounded-lg
             mobile:fixed
             mobile:bottom-0
@@ -143,9 +143,7 @@ const Header = () => {
             mobile:py-3
             mobile:bg-header
            border-primary
-           
-               "
-        >
+               ">
           <CgMenuGridO
             className={`
     ${open ? `text-primary` : "text-white"}
@@ -158,9 +156,9 @@ const Header = () => {
     ${
       open
         ? `flex-col  bg-header justify-center gap-y-4 rounded-2xl border-t-4 fixed bottom-[50px] w-full h-[40vh]  z-[999999999]`
-        : "mobile:fixed -bottom-[100vh] md:px-8 py-1 items-center flex-row gap-1.5"
+        : "mobile:fixed -bottom-[50vh] md:px-8 py-1 items-center flex-row gap-1.5"
     }
-    transition-height duration-1000 ease-in-out flex items-center`}
+    transition-height duration-700 ease-in-out flex items-center`}
           >
             <Link className={getMenuClass("/movies")} to={"/movies"}>
               Movies

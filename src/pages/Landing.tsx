@@ -1,6 +1,8 @@
 import bg from "../assets/bg1.jpg";
-import bg1 from "../assets/4.jpg";
+import bg1 from "../assets/login-background.jpg";
 import Nav from "../components/Nav";
+import image1 from "../assets/cta-logo-one.svg";
+import image2 from "../assets/cta-logo-two.png";
 import Footer from "../Layouts/Footer";
 import Section from "../components/Section";
 import { useState } from "react";
@@ -14,22 +16,28 @@ export function Landing() {
       <Nav />
       <div
         style={{
-          backgroundImage: `linear-gradient(270deg, #000, #0005) , url(${bg1})`,
+          backgroundImage: `url(${bg1})`,
           backgroundPosition: "center",
           backgroundSize: "cover",
-          backgroundAttachment: "fixed",
         }}
-        className="flex min-h-screen relative w-full flex-col items-center justify-center bg-cover px-10 pt-4 mobile:-mt-16 ease-in-out"
+        className="flex min-h-screen bg-fixed gap-y-5 mobile:bg-scroll relative w-full flex-col items-center justify-center text-center bg-cover px-4 -mt-6 mobile:-mt-16 ease-in-out"
       >
-        <h2 className="text-3xl md:text-5xl border-b-[6px] rounded-md py-2 border-primary font-extrabold mobile:text-center leading-snug text-white ">
+        <img src={image1} alt="image1" className="w-full h-[100px]" />
+
+        <h2 className="text-3xl md:text-5xl border-b-[6px] py-2 rounded-md  border-primary font-extrabold  leading-snug text-white ">
           Bring unlimited Movies , TV Shows and more
         </h2>
-        <p className="my-12 md:text-3xl text-2xl  mobile:text-center">
+        <p className="md:text-3xl text-2xl">
           Watch Anywhere. Anytime. On any device
         </p>
+        <img
+          src={image2}
+          alt="image1"
+          className="w-[70%] mobile:w-full h-[50px]"
+        />
         <button
           onClick={() => HanldeShow()}
-          className="rounded-md shadow-lg shadow-black border-none bg-primary px-8 py-5 text-2xl font-extrabold  transition-all delay-[1] ease-in hover:scale-110  hover:shadow-2xl hover:shadow-teal-500 mobile:px-8 mobile:py-5 mobile:text-lg"
+          className="rounded-md shadow-lg mt-2 shadow-black border-none bg-primary px-7 py-6 text-2xl font-extrabold  transition-all delay-[1] ease-in hover:scale-110  hover:shadow-2xl hover:shadow-teal-500 mobile:px-8 mobile:text-lg"
         >
           Watch Now
         </button>
@@ -40,7 +48,7 @@ export function Landing() {
               : "hidden"
           }`}
         >
-          <div className=" text-4xl flex flex-col items-center gap-y-10 bg-black opacity-[.96] shadow-black shadow-md absolut w-[400px] py-24 px-10 text-centerbg-black  text-center">
+          <div className=" text-4xl flex flex-col items-center gap-y-10 bg-header  shadow-black shadow-md absolut w-[420px] py-24 px-4 text-centerbg-black  text-center">
             Please Login First
             <button
               onClick={() => HanldeShow()}

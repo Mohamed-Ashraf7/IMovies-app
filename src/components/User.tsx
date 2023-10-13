@@ -20,9 +20,7 @@ const UserProfile = () => {
   const handleSignOut = async () => {
     try {
       await signOut(auth);
-      setTimeout(() => {
-        navigate("/*");
-      }, 200);
+      navigate("/*");
     } catch (error) {
       console.log(error);
     }
@@ -33,19 +31,19 @@ const UserProfile = () => {
   return (
     user && (
       <div
-        className="fixed left-3 bottom-5 mobile:bottom-3 z-[9999] bg-white rounded-2xl  shadow-white shadow-sm"
+        className="fixed left-3 bottom-5 mobile:bottom-3 z-[9999] bg-white rounded-xl  shadow-white shadow-sm"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
         <button
           className="md:p-3 p-4 text-white text-sm md:text-3xl flex flex-col justify-center relative"
-          onClick={HanldeShow}
+          onClick={() => HanldeShow()}
         >
           <FaUserAlt
             className={`${isHovered === true ? "text-primary" : "text-black"}`}
           />
           {isHovered && (
-            <span className="absolute -top-7 w-[90px] -left-3 right-0 text-white text-sm text-center py-1 ">
+            <span className="absolute -top-7 mobile:-top-10 w-[90px] -left-3 right-0 text-white text-sm text-center py-1 md:px-8">
               Log Out
             </span>
           )}

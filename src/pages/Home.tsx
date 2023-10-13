@@ -113,7 +113,7 @@ const Home = () => {
         </Slider>
       </div>
       {/*********** in theaters *************************/}
-      <p className="text-center  shadow-md py-2 mb-2 text-4xl my-1">
+      <p className="text-center  shadow-md py-2 mb-2 px-2 text-4xl my-1">
         Let's Find World Best Movies
       </p>
       <Section title="In Theaters" hidden={inTheaters.length === 0}>

@@ -70,7 +70,6 @@ const SignUp = () => {
       setPasswordError("");
     }
   }, [email, fullname.length, confirmPass, pass]);
-
   function signUp(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
     if (!isDisabled) {
@@ -86,6 +85,9 @@ const SignUp = () => {
                 fullname: fullname,
                 uid: user.uid,
               });
+              setTimeout(() => {
+                navigate("/*");
+              }, 1000);
             } else {
               window.alert("Unknown error occurred, try again?");
             }
@@ -115,14 +117,12 @@ const SignUp = () => {
       getAuthStatus(err);
     }
   };
-
   useEffect(() => {
     formValidation();
   }, [email.length, formValidation, pass.length, fullname.length]);
-
   return (
     <div
-      className=" flex items-center relative mobile:justify-center px-2 justify-start min-h-screen md:py-2"
+      className="flex items-center relative mobile:justify-center px-2 justify-start min-h-screen md:py-2"
       style={{
         backgroundImage: `url(${bg})`,
         backgroundPosition: "center",
@@ -130,8 +130,11 @@ const SignUp = () => {
       }}
     >
       <main className="flex  items-center justify-center  lg:px-10 px-2 overflow-hidden ">
-        <form className="bg-primary text-white shadow-lg shadow-black flex flex-col lg:w-[450px]  w-screen  h-[570px] mobile:h-[600px] justify-center items-center px-3 ">
-          <Link to={"/*"} className="my-4 mt-7 text-4xl font-bold text-white">
+        <form className="bg-primary text-white shadow-lg shadow-black flex flex-col lg:w-[450px]  w-screen  h-[580px] justify-center items-center px-3 ">
+          <Link
+            to={"/*"}
+            className="my-4 mt-7 mobile:my-2 text-4xl font-bold text-white"
+          >
             I Movies
           </Link>
           <p>Create An Account</p>
@@ -190,7 +193,7 @@ const SignUp = () => {
                 : " text-gray-200 bg-blue-600"
             } m-3 text-white  w-2/4 rounded-sm px-4 py-3 shadow-sm shadow-black transition duration-200 ease-in"`}
           >
-            Start Binging 🍿🍾
+            Start Binging 🍿
           </button>
           <Link
             to="/Login"
@@ -251,12 +254,6 @@ const SignUp = () => {
         <div className="flex flex-col items-center justify-center fixed top-0 left-0 w-full h-full bg-black bg-opacity-80 z-50">
           <div className=" text-4xl text-white flex mobile:text-xl rounded-md flex-col items-center  gap-y-4 bg-[#00695c] opacity-[.96] shadow-black shadow-md absolut  py-20 px-5 text-center ">
             Signed up successfully! <BiSolidUserCheck size={40} />
-            <button
-              onClick={() => navigate("/*")}
-              className="rounded-lg shadow-md shadow-black block border-none text-black bg-white px-7 py-4 text-md font-extrabold transition-all delay-[1] ease-in hover:scale-110 hover:shadow-2xl hover:shadow-teal-500 mobile:px-8 mobile:py-5 mobile:text-lg mt-4"
-            >
-              Next
-            </button>
           </div>
         </div>
       )}

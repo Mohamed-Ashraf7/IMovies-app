@@ -49,7 +49,6 @@ const App = () => {
         if (hrefAttribute) {
           const targetId = hrefAttribute.substring(1);
           const targetElement = document.getElementById(targetId);
-
           if (targetElement) {
             targetElement.scrollIntoView({
               behavior: "smooth",
@@ -62,7 +61,7 @@ const App = () => {
 
   if (!genres.movie.length || !genres.tv.length) {
     return (
-      <div className="fixed left-0 top-0 right-0 bottom-0 flex items-center justify-center">
+      <div className="fixed left-0 top-0 w-full min-h-screen right-0 bottom-0 flex items-center justify-center">
         <Loading></Loading>
       </div>
     );
