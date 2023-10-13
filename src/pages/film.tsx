@@ -115,7 +115,7 @@ const Film = (props: Props) => {
               {film.voteAverage.toFixed(1)}
               <FaStar size={20} />
             </p>
-            <p className="text-light line-clamp-3 lg:my-2 md:max-w-[650px] text-md opacity-[0.9] font-sans">
+            <p className="text-light line-clamp-3 lg:my-2 md:max-w-[650px] text-base opacity-[0.9] font-sans">
               {shortenedOverview}
             </p>
             <div className="flex items-center justify-between mobile:justify-start w-full ">

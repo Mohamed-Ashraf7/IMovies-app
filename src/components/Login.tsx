@@ -173,7 +173,7 @@ const Login = () => {
             Don't have an account ?
           </Link>
           <div className="mx-auto my-3 h-[0.5px] w-full border-t-2 border-zinc-700 md:w-80">
-            <p className="mx-auto flex items-center justify-center -mt-[20px] h-8 w-10  bg-blue-500 rounded-md text-md ">
+            <p className="mx-auto flex items-center justify-center -mt-[20px] h-8 w-10  bg-blue-500 rounded-md text-base ">
               OR
             </p>
           </div>
@@ -183,7 +183,7 @@ const Login = () => {
             className="mx-auto hover:rounded-md bg-white my-3 hover:border-black hover:border-b-4 mb-3 flex h-8 w-full items-center justify-center  font-bold outline-none md:w-80"
           >
             {" "}
-            <p className="mr-3 text-md  font-semibold text-gray-600  ">
+            <p className="mr-3 text-base  font-semibold text-gray-600  ">
               Sign in with Google
             </p>
             <img src={googleLogo} alt="google" className="h-7 w-7" />
@@ -197,7 +197,7 @@ const Login = () => {
             {error}
             <button
               onClick={() => HanldeShow()}
-              className="rounded-md shadow-black shadow-md block border-none text-black bg-white px-7 py-4 text-md font-extrabold transition-all delay-[1] ease-in hover:scale-110 hover:shadow-2xl hover:shadow-teal-500 mobile:px-8 mobile:py-5 mobile:text-lg mt-4"
+              className="rounded-md shadow-black shadow-md block border-none text-black bg-white px-7 py-4 text-base font-extrabold transition-all delay-[1] ease-in hover:scale-110 hover:shadow-2xl hover:shadow-teal-500 mobile:px-8 mobile:py-5 mobile:text-lg mt-4"
             >
               Cancel
             </button>
@@ -208,12 +208,6 @@ const Login = () => {
         <div className="flex flex-col items-center justify-center fixed top-0 left-0 w-full h-full bg-black bg-opacity-80 z-50">
           <div className=" text-4xl text-white flex mobile:text-xl rounded-md flex-col items-center  gap-y-4 bg-[#00695c] opacity-[.96] shadow-black shadow-md absolut  py-20 px-5 text-center ">
             Signed up successfully! <BiSolidUserCheck size={40} />
-            <button
-              onClick={() => navigate("/*")}
-              className="rounded-lg shadow-md shadow-black block border-none text-black bg-white px-7 py-4 text-md font-extrabold transition-all delay-[1] ease-in hover:scale-110 hover:shadow-2xl hover:shadow-teal-500 mobile:px-8 mobile:py-5 mobile:text-lg mt-4"
-            >
-              Next
-            </button>
           </div>
         </div>
       )}

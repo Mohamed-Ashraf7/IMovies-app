@@ -46,10 +46,10 @@ export const TrendingHero = (props: Props) => {
           <p className="text-3xl mobile:text-center lg:text-5xl tracking-widest font-extrabold  bg-clip-text mobile:px-2  text-start my-2 py-3 ">
             {props.film.title}
           </p>
-          <p className="text-lg font-light mobile:text-md text-white mobile:text-center mobile:px-2">
+          <p className="text-lg font-light mobile:text-base text-white mobile:text-center mobile:px-2">
             {shortenedOverview}
           </p>
-          <p className="text-2xl mobile:text-md text-white bg-orange-400 rounded-full p-2 w-fit">
+          <p className="text-2xl text-white bg-orange-400 rounded-full p-2 w-fit">
             {props.film.voteAverage.toFixed(1)}
           </p>
           <div className="flex flex-row items-center  my-2 text-2xl ">
@@ -68,7 +68,13 @@ export const TrendingHero = (props: Props) => {
               props.onPlayTrailer();
             }}
           >
-            <MdPlayCircleOutline size={90}></MdPlayCircleOutline>
+            <span className="mobile:hidden block">
+              {" "}
+              <MdPlayCircleOutline size={90}></MdPlayCircleOutline>
+            </span>
+            <span className="block md:hidden">
+              <MdPlayCircleOutline size={45}></MdPlayCircleOutline>
+            </span>
             <span>Play trailer</span>
           </button>
         </div>

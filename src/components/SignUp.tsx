@@ -9,7 +9,6 @@ import bg1 from "../assets/paulina-milde-jachowska-lQV17pXAExE-unsplash.jpg";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
-  signOut,
   signInWithPopup,
 } from "firebase/auth";
 import { AuthError } from "../Interfaces";
@@ -243,7 +242,7 @@ const SignUp = () => {
             {error}
             <button
               onClick={() => HanldeShow()}
-              className="rounded-xl block border-none text-black bg-white px-7 py-4 text-md font-extrabold transition-all delay-[1] ease-in hover:scale-110 hover:shadow-2xl hover:shadow-teal-500 mobile:px-8 mobile:py-5 mobile:text-lg mt-4"
+              className="rounded-xl block border-none text-black bg-white px-7 py-4 text-base font-extrabold transition-all delay-[1] ease-in hover:scale-110 hover:shadow-2xl hover:shadow-teal-500 mobile:px-8 mobile:py-5 mobile:text-lg mt-4"
             >
               Cancel
             </button>

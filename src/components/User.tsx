@@ -4,10 +4,12 @@ import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import { User } from "firebase/auth";
 import { FaUserAlt } from "react-icons/fa";
+
 const UserProfile = () => {
   const [user, setUser] = useState<User | null>(null);
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
@@ -16,6 +18,7 @@ const UserProfile = () => {
       unsubscribe();
     };
   }, []);
+
   const [show, setShow] = useState(false);
   const handleSignOut = async () => {
     try {
@@ -28,6 +31,9 @@ const UserProfile = () => {
   const HanldeShow = () => {
     setShow(!show);
   };
+  if (!user) {
+    return null;
+  }
   return (
     user && (
       <div
@@ -65,7 +71,7 @@ const UserProfile = () => {
                 Cancel
               </button>
               <button
-                onClick={handleSignOut}
+                onClick={() => handleSignOut()}
                 className="rounded-xl block border-none text-black bg-white px-7 py-4 text-md font-extrabold transition-all delay-[1] ease-in hover:scale-110 hover:shadow-2xl hover:shadow-teal-500 mobile:px-4 mobile:py-3  mt-4"
               >
                 OK

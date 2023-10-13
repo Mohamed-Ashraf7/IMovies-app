@@ -20,14 +20,18 @@ export function Landing() {
           backgroundPosition: "center",
           backgroundSize: "cover",
         }}
-        className="flex min-h-screen bg-fixed gap-y-5 mobile:bg-scroll relative w-full flex-col items-center justify-center text-center bg-cover px-4 -mt-6 mobile:-mt-16 ease-in-out"
+        className="flex min-h-screen bg-fixed gap-y-5 mobile:gap-y-2 mobile:bg-scroll relative w-full flex-col items-center justify-center text-center bg-cover px-4 -mt-6 mobile:-mt-16 ease-in-out"
       >
-        <img src={image1} alt="image1" className="w-full h-[100px]" />
+        <img
+          src={image1}
+          alt="image1"
+          className="w-full h-[100px] mobile:h-[70px]"
+        />
 
-        <h2 className="text-3xl md:text-5xl border-b-[6px] py-2 rounded-md  border-primary font-extrabold  leading-snug text-white ">
+        <h2 className="text-xl md:text-5xl border-b-[6px] py-2 rounded-md  border-primary font-extrabold  leading-snug text-white ">
           Bring unlimited Movies , TV Shows and more
         </h2>
-        <p className="md:text-3xl text-2xl">
+        <p className="md:text-3xl text-lg">
           Watch Anywhere. Anytime. On any device
         </p>
         <img
@@ -52,7 +56,7 @@ export function Landing() {
             Please Login First
             <button
               onClick={() => HanldeShow()}
-              className="rounded-xl block border-none text-black bg-white px-7 py-4 text-md font-extrabold transition-all delay-[1] ease-in hover:scale-110 hover:shadow-2xl hover:shadow-teal-500 mobile:px-8 mobile:py-5 mobile:text-lg mt-4"
+              className="rounded-xl block border-none text-black bg-white px-7 py-4 text-base font-extrabold transition-all delay-[1] ease-in hover:scale-110 hover:shadow-2xl hover:shadow-teal-500 mobile:px-8 mobile:py-5 mobile:text-lg mt-4"
             >
               Cancel
             </button>
