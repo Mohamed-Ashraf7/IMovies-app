@@ -118,7 +118,8 @@ const SignUp = () => {
   };
   useEffect(() => {
     formValidation();
-  }, [email.length, formValidation, pass.length, fullname.length]);
+  }, [formValidation]);
+  console.log("SignUp");
   return (
     <div
       className="flex items-center relative mobile:justify-center px-2 justify-start min-h-screen md:py-2"
@@ -128,8 +129,8 @@ const SignUp = () => {
         backgroundSize: "cover",
       }}
     >
-      <main className="flex  items-center justify-center  lg:px-10 px-2 overflow-hidden ">
-        <form className="bg-primary text-white shadow-lg shadow-black flex flex-col lg:w-[450px]  w-screen  h-[580px] justify-center items-center px-3 ">
+      <main className="flex items-center justify-center  lg:px-10 px-2 overflow-hidden ">
+        <form className="bg-primary text-white shadow-lg shadow-black flex flex-col lg:w-[450px] w-screen h-[580px]justify-center items-center px-3 ">
           <Link
             to={"/*"}
             className="my-4 mt-7 mobile:my-2 text-4xl font-bold text-white"
@@ -183,7 +184,7 @@ const SignUp = () => {
           />
           {passwordError && <p className="text-black">{passwordError}</p>}
           <button
-            onClick={signUp}
+            onClick={() => signUp}
             type="submit"
             disabled={isDisabled}
             className={`${
@@ -206,7 +207,7 @@ const SignUp = () => {
             </p>
           </div>
           <button
-            onClick={signInWithGoogle}
+            onClick={() => signInWithGoogle}
             type="button"
             className="mx-auto my-2 rounded-md  border-white border-b-2 mb-4 flex h-12 w-full items-center justify-center  bg-white font-bold outline-none md:w-60 hover:bg-gray-300"
           >

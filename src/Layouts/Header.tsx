@@ -14,7 +14,7 @@ import { SearchResult } from "../components/SearchResult";
 import { IoIosSearch } from "react-icons/io";
 
 const MENU_CLASS = `
-  rounded-md border-none bg-white text-primary px-8 py-3 text-md font-extrabold  transition-all delay-[1] ease-in hover:bg-gray-500 hover:scale-110 hover:text-white hover:shadow-2xl hover:shadow-teal-500 
+  rounded-md border-none bg-white text-primary px-7 py-3 text-base font-extrabold  transition-all delay-[1] ease-in hover:bg-gray-500 hover:scale-110 hover:text-white hover:shadow-2xl hover:shadow-teal-500 
   mobile:px-5
 `;
 const MENU_CLASS_ACTIVE = `
@@ -26,7 +26,6 @@ const Header = () => {
   const [params, unUsedValue] = useSearchParams();
   const navigate = useNavigate();
   const { toggleTheme } = useTheme();
-  const { theme } = useTheme();
   const [pathname, setPathname] = useState("");
   const pathnameRef = useRef("");
   const defaultKeyword = useRef("");
@@ -45,7 +44,6 @@ const Header = () => {
       setShow("top");
     }
   };
-
   const goToSearchPage = () => {
     if (keyword) {
       defaultKeyword.current = keyword;
@@ -143,7 +141,8 @@ const Header = () => {
             mobile:py-3
             mobile:bg-header
            border-primary
-               ">
+               "
+        >
           <CgMenuGridO
             className={`
     ${open ? `text-primary` : "text-white"}

@@ -17,16 +17,20 @@ export const Slider = (props: Props) => {
 
   if (props.isMovieCard) {
     settings = {
-      ...settings,
+      speed: 800,
+      autoplay: true,
+      autoplaySpeed: 3500,
+      cssEase: "linear",
+      pauseOnHover: true,
       infinite: true,
       swipe: true,
       slidesToShow: props.num,
       slidesToScroll: 1,
       responsive: [
         {
-          breakpoint: 900,
+          breakpoint: 1024,
           settings: {
-            slidesToShow: 2,
+            slidesToShow: 3,
             slidesToScroll: 2,
           },
         },
@@ -43,9 +47,7 @@ export const Slider = (props: Props) => {
   const [onSwipe, setOnSwipe] = useState(false);
   return (
     <Slick
-      autoplay={false}
       {...settings}
-      autoplaySpeed={5000}
       onSwipe={() => setOnSwipe(true)}
       afterChange={() => setOnSwipe(false)}
     >

@@ -6,7 +6,7 @@ interface Props {
   src: string | null;
   onHide: () => void;
 }
-export const TrailerModal = (props: Props) => {
+ const TrailerModal = (props: Props) => {
   const [show, setShow] = useState(true);
 
   const hide = () => {
@@ -17,7 +17,7 @@ export const TrailerModal = (props: Props) => {
   useEffect(() => {
     if (props.src) setShow(true);
   }, [props.src]);
-
+  console.log("TrailerModal");
   return (
     <div
       onClick={() => hide()}
@@ -92,3 +92,4 @@ export const TrailerModal = (props: Props) => {
     </div>
   );
 };
+export default TrailerModal;

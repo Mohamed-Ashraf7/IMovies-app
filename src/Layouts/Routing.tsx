@@ -1,14 +1,14 @@
 import { Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
-import Loading from "../components/Loading";
 import AuthGuard from "../components/AuthGuard";
-const Film = lazy(() => import("../pages/film"));
+import Film from "../pages/film";
+const Loading = lazy(() => import("../components/Loading"));
+const Catalog = lazy(() => import("../pages/Catalog"));
+const Season = lazy(() => import("../pages/Season"));
 const Login = lazy(() => import("../components/Login"));
 const SignUp = lazy(() => import("../components/SignUp"));
 const Landing = lazy(() => import("../pages/Landing"));
 const Home = lazy(() => import("../pages/Home"));
-const Catalog = lazy(() => import("../pages/Catalog"));
-const Season = lazy(() => import("../pages/Season"));
 const Routing = () => {
   return (
     <Suspense fallback={<Loading />}>
@@ -16,10 +16,12 @@ const Routing = () => {
         <Route
           path="/*"
           element={
-            <AuthGuard
-              authenticatedComponent={<Home />}
-              unauthenticatedComponent={<Landing />}
-            />
+            <Suspense fallback={<Loading />}>
+              <AuthGuard
+                authenticatedComponent={<Home />}
+                unauthenticatedComponent={<Landing />}
+              />
+            </Suspense>
           }
         />
         <Route path="/movie/:id" element={<Film mediaType="movie" />}></Route>

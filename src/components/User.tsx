@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { User } from "firebase/auth";
 import { FaUserAlt } from "react-icons/fa";
 
-const UserProfile = () => {
+const UserProfile = React.memo(() => {
   const [user, setUser] = useState<User | null>(null);
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
@@ -28,6 +28,7 @@ const UserProfile = () => {
       console.log(error);
     }
   };
+  console.log("User");
   const HanldeShow = () => {
     setShow(!show);
   };
@@ -82,6 +83,6 @@ const UserProfile = () => {
       </div>
     )
   );
-};
+});
 
 export default UserProfile;

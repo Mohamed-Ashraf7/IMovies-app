@@ -8,7 +8,6 @@ const AuthGuard: React.FC<AuthGuardProps> = ({
   unauthenticatedComponent,
 }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user !== null) {
@@ -17,10 +16,8 @@ const AuthGuard: React.FC<AuthGuardProps> = ({
         setIsAuthenticated(false);
       }
     });
-
     return () => unsubscribe();
   }, []);
-
   if (isAuthenticated) {
     return authenticatedComponent;
   } else {

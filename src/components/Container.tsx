@@ -4,7 +4,7 @@ const Container = (props: customProps) => {
   return (
     <div
       className={mergeClasses(
-        "px-14 py-4 max-w-screen-xl mx-auto  mobile:px-10",
+        "py-4 max-w-screen-xl mx-auto px-10 xl:px-0",
         props.className
       )}
     >

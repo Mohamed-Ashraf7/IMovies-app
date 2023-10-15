@@ -75,7 +75,6 @@ const Login = () => {
       console.log(err);
     }
   };
-
   const signInWithGoogle = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
@@ -90,11 +89,10 @@ const Login = () => {
       console.error(err);
     }
   };
-
   useEffect(() => {
     formValidation();
-  }, [email, password.length, formValidation]);
-
+  }, [formValidation]);
+  console.log("login");
   return (
     <div
       className="flex items-center relative justify-end mobile:justify-center min-h-screen md:py-2"

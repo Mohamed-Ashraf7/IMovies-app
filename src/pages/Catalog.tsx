@@ -100,7 +100,7 @@ const Catalog = (props: Props) => {
       window.removeEventListener("scroll", onWindowScroll);
     };
   }, []);
-
+  console.log("Catalog");
   return (
     <div
       className={`${

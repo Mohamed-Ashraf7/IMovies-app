@@ -32,7 +32,7 @@ export const SearchResult = (props: Props) => {
   useEffect(() => {
     fetch();
   }, [props.keyword]);
-
+  console.log("SearchResult");
   return (
     <div className="absolute top-[48px] left-0 right-0 rounded-md bg-header shadow-lg overflow-y-scroll">
       <div className="max-h-[480px] scrollbar scrollbar-thumb-primary scrollbar-track-header pl-1">
@@ -41,7 +41,7 @@ export const SearchResult = (props: Props) => {
             key={i}
             className="flex items-start p-1.5 rounded-lg hover:bg-header cursor-pointer m-1.5"
             onClick={() => navigate(`/${film.mediaType}/${film.id}`)}
-    >
+          >
             <Image
               src={tmdbImageSrc(film.posterPath)}
               className="max-h-[100px] max-w-[100px] rounded-md object-cover"

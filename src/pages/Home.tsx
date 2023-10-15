@@ -6,7 +6,6 @@ import Slider from "./../components/Slider/Slider";
 import Card from "../components/Card";
 import { mergeFilms, tmdbImageSrc } from "../utilies";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { TrailerModal } from "../components/TrailerModal";
 import {
   getInTheaters,
   getPopulars,
@@ -16,7 +15,7 @@ import {
 } from "../api/tmdb-api";
 import { useTheme } from "../api/Theme";
 import { useNavigate } from "react-router-dom";
-
+import TrailerModal from "../components/TrailerModal";
 const Home = () => {
   const navigate = useNavigate();
   const { theme } = useTheme();
@@ -73,7 +72,7 @@ const Home = () => {
     fetchTopRatedMovie();
     fetchTopRatedTv();
   }, []);
-
+  console.log("Home");
   return (
     <div
       className={`${
@@ -117,7 +116,7 @@ const Home = () => {
         Let's Find World Best Movies
       </p>
       <Section title="In Theaters" hidden={inTheaters.length === 0}>
-        <Slider isMovieCard={true} num={5}>
+        <Slider isMovieCard={true} num={6}>
           {(_) =>
             inTheaters.map((film, i) => (
               <Card
@@ -138,13 +137,14 @@ const Home = () => {
         title="What's Popular"
         hidden={populars.length === 0}
         className={`${
-          theme === "light" ? "bg-header text-light" : "bg-[#f3f4f6] text-dark"
+          theme === "light" ? "bg-header text-light" : " bg-[#f3f4f6] text-dark"
         }`}
       >
         <Slider isMovieCard={true} num={3}>
           {(_) =>
             populars.map((film, i) => (
               <Card
+                className="px-3 md:min-h-[420px]"
                 vote={film.voteAverage}
                 onClick={() => detailPage(film)}
                 title={film.title}
@@ -257,9 +257,9 @@ const Home = () => {
       <Section
         className={`${
           theme === "light" ? "bg-header text-light" : "bg-[#f3f4f6] text-dark"
-        } flex mobile:flex-col items-center justify-between min-h-[250px] my-5 `}
+        } flex mobile:flex-col items-center justify-between min-h-[250px] my-5`}
       >
-        <div>
+        <div className="lg:px-6">
           <h2 className="text-5xl mobile:text-2xl  mobile:text-center">
             TRIAL START FIRST 30 DAYS.
           </h2>
@@ -267,7 +267,7 @@ const Home = () => {
             Enter your email to create or restart your membership
           </p>
         </div>
-        <div className="flex flex-row items-center ">
+        <div className="flex flex-row items-center lg:px-2 ">
           {" "}
           <input
             type="email"

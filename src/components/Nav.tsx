@@ -3,7 +3,7 @@ import logo from "../assets/3.png";
 export function Nav() {
   return (
     <nav
-      className="left-0 right-0 sticky top-0 z-10 flex h-[90px] w-full mobile:h-20 border-b-2
+      className="left-0 right-0 sticky top-0 z-10 flex h-[90px] w-full mobile:h-[74px] border-b-2
              items-center justify-center bg-[#1a1a1a]  rounded-lg  mobile:px-6 px-20"
     >
       <Link
@@ -38,13 +38,13 @@ export function Nav() {
         </div>
         <Link
           to="/SignUp"
-          className="delay-3 -mt-1 shadow-md mobile:mr-2 mr-0 whitespace-nowrap rounded-[4px] bg-primary px-7 py-4 text-md font-bold text-white transition-all ease-out hover:bg-zinc-600  md:mr-6 md:mt-1"
+          className="delay-3 -mt-1 shadow-md mobile:mr-2 mr-0 whitespace-nowrap rounded-[5px] bg-primary px-7 py-4 mobile:px-5 mobile:py-3 text-md font-bold text-white transition-all ease-out hover:bg-zinc-600  md:mr-6 md:mt-1"
         >
           Sign up
         </Link>
         <Link
           to="/Login"
-          className="delay-3 -mt-1 whitespace-nowrap rounded-[4px] shadow-md px-6 py-3 text-sm font-bold text-black bg-white  transition-all ease-out hover:mx-2 hover:scale-110 hover:border-none hover:bg-primary hover:text-white md:mt-1.5"
+          className="delay-3 -mt-1 whitespace-nowrap rounded-sm shadow-md px-6 py-3 text-sm mobile:px-5 mobile:py-2 font-bold text-black bg-white  transition-all ease-out hover:mx-2 hover:scale-110 hover:border-none hover:bg-primary hover:text-white md:mt-1.5"
         >
           Login
         </Link>

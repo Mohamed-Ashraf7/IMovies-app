@@ -13,9 +13,9 @@ import Card from "../components/Card";
 import Image from "../components/Image";
 import Section from "../components/Section";
 import Slider from "../components/Slider/Slider";
-import { TrailerModal } from "../components/TrailerModal";
 import { Cast, MediaType, Film as FilmData, Trailer } from "../Interfaces";
 import { tmdbImageSrc, youtubeThumbnail } from "../utilies";
+const TrailerModal = lazy(() => import("../components/TrailerModal"));
 const Loading = lazy(() => import("../components/Loading"));
 interface Props {
   mediaType: MediaType;

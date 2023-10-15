@@ -10,6 +10,7 @@ export function Landing() {
   const [show, setShow] = useState(false);
   const HanldeShow = () => {
     setShow(!show);
+    
   };
   return (
     <div className=" w-full bg-header text-light">
@@ -20,7 +21,7 @@ export function Landing() {
           backgroundPosition: "center",
           backgroundSize: "cover",
         }}
-        className="flex min-h-screen bg-fixed gap-y-5 mobile:gap-y-2 mobile:bg-scroll relative w-full flex-col items-center justify-center text-center bg-cover px-4 -mt-6 mobile:-mt-16 ease-in-out"
+        className="flex min-h-screen bg-fixed gap-y-5 mobile:gap-y-5 mobile:bg-scroll relative w-full flex-col items-center justify-center text-center bg-cover px-4 -mt-6 mobile:-mt-20 ease-in-out"
       >
         <img
           src={image1}
@@ -37,11 +38,11 @@ export function Landing() {
         <img
           src={image2}
           alt="image1"
-          className="w-[70%] mobile:w-full h-[50px]"
+          className="w-[70%] mobile:w-full h-[50px] mobile:hidden block"
         />
         <button
           onClick={() => HanldeShow()}
-          className="rounded-md shadow-lg mt-2 shadow-black border-none bg-primary px-7 py-6 text-2xl font-extrabold  transition-all delay-[1] ease-in hover:scale-110  hover:shadow-2xl hover:shadow-teal-500 mobile:px-8 mobile:text-lg"
+          className="rounded-md shadow-lg mt-2 shadow-black border-none bg-primary px-7 py-6  text-2xl font-extrabold  transition-all delay-[1] ease-in hover:scale-110  hover:shadow-2xl hover:shadow-teal-500 mobile:px-4 mobile:py-4 mobile:text-lg"
         >
           Watch Now
         </button>

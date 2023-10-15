@@ -16,27 +16,13 @@ const Card = (props: Props) => {
   const withPlay = props.withPlay ?? true;
 
   return (
-    <div
-      onClick={() => (props.onClick ? props.onClick() : " ")}
-      className={mergeClasses(
-        "group mx-3 my-1.5 cursor-pointer",
-        props.className
-      )}
-    >
+    <>
       <div
-        className="
-          h-[330px]
-            mobile:h-[250px]
-         relative    
-         rounded-lg
-         overflow-hidden
-         hover:p-0
-     hover:scale-105
-     hover:border-b-4
-     hover:rounded-xl
-     hover:border-primary
-     hover:transition duration-900
-      "
+        onClick={() => (props.onClick ? props.onClick() : " ")}
+        className={mergeClasses(
+          "group mx-1 my-1.5 cursor-pointer  h-[350px] mobile:h-[250px] relative     rounded-lg overflow-hidden hover:p-0hover:scale-105 hover:border-b-4 hover:rounded-xl hover:border-primary hover:transition duration-900",
+          props.className
+        )}
       >
         {/*
          */}
@@ -83,13 +69,13 @@ const Card = (props: Props) => {
         ) : (
           <p className="text-start uppercase">N/A</p>
         )}
-        <p className="px-3 py-1 rounded-md text-xl text-center gap-x-[2px] flex items-center  text-orange-400  mx-1">
+        <p className="px-3 py-1 rounded-md text-lg text-center gap-x-[2px] flex items-center  text-orange-400  mx-1">
           {props.vote}
           <FaStar className="text-orange-400 text-center " />
         </p>
+        {props.children}
       </div>
-      {props.children}
-    </div>
+    </>
   );
 };
 
