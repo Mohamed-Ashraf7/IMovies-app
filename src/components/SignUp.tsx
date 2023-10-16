@@ -116,10 +116,9 @@ const SignUp = () => {
   };
   useEffect(() => {
     if (signedIn) {
-    const time= setTimeout(() => {
-        navigate("/*");
-              }, 1000);
-      return clearTimeout(time);
+   setTimeout(() => {
+     navigate("/*");
+     }, 1000);
     }
     formValidation();
   }, [formValidation,signedIn,navigate]);
