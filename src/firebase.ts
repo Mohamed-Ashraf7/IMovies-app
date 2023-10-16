@@ -17,7 +17,7 @@ const firebaseConfig = {
   storageBucket: "movie-typescript.appspot.com",
   messagingSenderId: "105313682023",
   appId: "1:105313682023:web:5f3dba21aefe22a9f48ac2",
-  measurementId: "G-DDG76BQ1EC",
+  measurementId: "G-DDG76BQ1EC"
 };
 
 // Initialize Firebase

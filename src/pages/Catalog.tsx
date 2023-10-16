@@ -100,8 +100,7 @@ const Catalog = (props: Props) => {
       window.removeEventListener("scroll", onWindowScroll);
     };
   }, []);
-  console.log("Catalog");
-  return (
+    return (
     <div
       className={`${
         theme === "light" ? "bg-dark text-light" : "bg-light text-dark"

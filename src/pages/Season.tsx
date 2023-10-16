@@ -23,7 +23,7 @@ const Season = () => {
   useEffect(() => {
     fetch();
   }, []);
-  console.log("Season");
+  
   if (!season) {
     return <></>;
   }

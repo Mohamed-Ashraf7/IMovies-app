@@ -40,7 +40,7 @@ export const TrendingHero = (props: Props) => {
       <div className="flex lg:mt-12 md:flex-row flex-col gap-4  mobile:mt-20 items-center justify-between lg:gap-x-20 relative z-10 mx-1 max-w-[80%] mobile:max-w-[100%]">
         <Image
           src={tmdbImageSrc(props.film.posterPath)}
-          className="max-w-[320px] mobile:w-[70%] h-[300px]   mobile:mx-auto shadow-xl shadow-neutral-700"
+          className="max-w-[320px] mobile:w-[68%] h-[300px]   mobile:mx-auto shadow-xl shadow-neutral-700"
         ></Image>
         <div className="mobile:flex md:mt-4 mobile:items-center gap-y-1 flex justify-center flex-col">
           <p className="text-3xl mobile:text-center lg:text-5xl tracking-widest font-extrabold  bg-clip-text mobile:px-2  text-start my-2 py-3 ">

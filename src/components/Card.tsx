@@ -20,7 +20,7 @@ const Card = (props: Props) => {
       <div
         onClick={() => (props.onClick ? props.onClick() : " ")}
         className={mergeClasses(
-          "group mx-1 my-1.5 cursor-pointer  h-[350px] mobile:h-[250px] relative     rounded-lg overflow-hidden hover:p-0hover:scale-105 hover:border-b-4 hover:rounded-xl hover:border-primary hover:transition duration-900",
+          "group mx-1 my-1.5 cursor-pointer h-[350px] mobile:h-[310px] relative  rounded-md overflow-hidden hover:p-0hover:scale-105 hover:border-b-4 hover:rounded-xl hover:border-primary hover:transition duration-900",
           props.className
         )}
       >

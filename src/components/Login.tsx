@@ -92,7 +92,7 @@ const Login = () => {
   useEffect(() => {
     formValidation();
   }, [formValidation]);
-  console.log("login");
+  
   return (
     <div
       className="flex items-center relative justify-end mobile:justify-center min-h-screen md:py-2"

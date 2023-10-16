@@ -72,7 +72,7 @@ const Home = () => {
     fetchTopRatedMovie();
     fetchTopRatedTv();
   }, []);
-  console.log("Home");
+ 
   return (
     <div
       className={`${
@@ -144,7 +144,7 @@ const Home = () => {
           {(_) =>
             populars.map((film, i) => (
               <Card
-                className="px-3 md:min-h-[420px]"
+                className="md:px-3 md:min-h-[420px]"
                 vote={film.voteAverage}
                 onClick={() => detailPage(film)}
                 title={film.title}
@@ -214,10 +214,11 @@ const Home = () => {
         title="Top Rated Movies"
         onTitleClick={() => navigate(`/list/top-rated-movies`)}
       >
-        <Slider isMovieCard={true} num={5}>
+        <Slider isMovieCard={true} num={4}>
           {(_) =>
             topRatedMovie.map((film, i) => (
               <Card
+                className="md:min-h-[420px]"
                 vote={film.voteAverage}
                 onClick={() => detailPage(film)}
                 title={film.title}
@@ -267,11 +268,11 @@ const Home = () => {
             Enter your email to create or restart your membership
           </p>
         </div>
-        <div className="flex flex-row items-center lg:px-2 ">
+        <div className="flex flex-row items-center lg:pe-5 ">
           {" "}
           <input
             type="email"
-            className="w-[350px] mobile:w-[200px] p-4 text-black placeholder:text-gray-400 rounded-l-xl"
+            className="w-[350px] mobile:w-[200px] p-4 text-black placeholder:text-gray-400 rounded-lg"
             placeholder="E-Mail . . . "
           />
           <button

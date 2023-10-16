@@ -50,7 +50,7 @@ const UserProfile = React.memo(() => {
             className={`${isHovered === true ? "text-primary" : "text-black"}`}
           />
           {isHovered && (
-            <span className="absolute -top-7 mobile:-top-10 w-[90px] -left-3 right-0 text-white text-sm text-center py-1 md:px-8">
+            <span className="absolute -top-7 mobile:-top-10 w-[90px] -left-3 right-0 text-white text-sm text-center py-1 ">
               Log Out
             </span>
           )}

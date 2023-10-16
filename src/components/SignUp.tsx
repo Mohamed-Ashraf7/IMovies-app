@@ -84,9 +84,7 @@ const SignUp = () => {
                 fullname: fullname,
                 uid: user.uid,
               });
-              setTimeout(() => {
-                navigate("/*");
-              }, 1000);
+            
             } else {
               window.alert("Unknown error occurred, try again?");
             }
@@ -117,8 +115,14 @@ const SignUp = () => {
     }
   };
   useEffect(() => {
+    if (signedIn) {
+    const time= setTimeout(() => {
+        navigate("/*");
+              }, 1000);
+      return clearTimeout(time);
+    }
     formValidation();
-  }, [formValidation]);
+  }, [formValidation,signedIn,navigate]);
   console.log("SignUp");
   return (
     <div
@@ -184,7 +188,7 @@ const SignUp = () => {
           />
           {passwordError && <p className="text-black">{passwordError}</p>}
           <button
-            onClick={() => signUp}
+            onClick={signUp}
             type="submit"
             disabled={isDisabled}
             className={`${
@@ -207,7 +211,7 @@ const SignUp = () => {
             </p>
           </div>
           <button
-            onClick={() => signInWithGoogle}
+            onClick={signInWithGoogle}
             type="button"
             className="mx-auto my-2 rounded-md  border-white border-b-2 mb-4 flex h-12 w-full items-center justify-center  bg-white font-bold outline-none md:w-60 hover:bg-gray-300"
           >
