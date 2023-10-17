@@ -114,10 +114,10 @@ export function Landing() {
       </div>
       <Section className="flex mobile:flex-col my-14 bg-black items-center justify-between min-h-[250px]">
         <div>
-          <h2 className="text-[44px] mobile:text-2xl text-white mobile:text-center">
+          <h2 className="text-[44px] mobile:text-2xl md:ps-4 text-white mobile:text-center">
             TRIAL START FIRST 30 DAYS.
           </h2>
-          <p className="text-gray-300 text-center text-lg">
+          <p className="text-gray-300 text-center text-lg md:pe-4">
             Enter your email to create or restart your membership
           </p>
         </div>
