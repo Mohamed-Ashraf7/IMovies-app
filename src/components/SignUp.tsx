@@ -43,7 +43,9 @@ const SignUp = () => {
       const user = userCredential.user;
       if (user) {
         setSignedIn(true);
-        navigate("/*");
+        setTimeout(() => {
+      navigate("/*");
+      }, 2000);
         await setDoc(doc(db, "users", user.uid), {
           email: email,
           fullname: fullname,

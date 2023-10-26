@@ -94,11 +94,12 @@ const Header = () => {
           <CgMenuGridO
             className={`${open ? `text-primary` : "text-white"}
           hidden mobile:block cursor-pointer`} size={45} onClick={handleOpen}/>
-          <div className={` ${ open
-        ? ` flex-col bg-header justify-center gap-y-4 rounded-2xl border-t-4 fixed bottom-[50px] w-full h-[40vh]  z-[999999999]`
-        : "mobile:fixed -bottom-[60vh] md:px-8 py-1 items-center flex-row gap-1.5"
-    }
-        transition-height duration-700 ease-in-out flex items-center`}>
+         <div
+  className={`${open
+      ? "flex-col bg-header justify-center gap-y-4 rounded-2xl border-t-4 fixed bottom-[50px] w-full h-[40vh] z-[999999999] transition-height duration-700 ease-in-out"
+      : "mobile:fixed -bottom-[60vh] md:px-8 py-1 items-center flex-row gap-1.5"
+  } flex items-center`}
+>
             <Link className="menuClass" to={"/movies"} onClick={handleClose}>
               Movies
             </Link>

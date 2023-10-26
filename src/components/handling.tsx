@@ -96,7 +96,7 @@ export const Handles = ({error,HandleShow,signedIn }:props) => {
   <>
   {error && (
         <div className="centerd flex-col  fixed top-0 left-0 w-full h-full bg-black bg-opacity-60 z-50">
-          <div className=" text-4xl text-white flex flex-col items-center gap-y-10 bg-red-700 opacity-[.96] shadow-black shadow-md absolut w-[450px] py-24 px-5 text-center">
+          <div className=" text-4xl text-white flex flex-col items-center gap-y-10 bg-red-700 opacity-[.96] shadow-black shadow-md w-[450px] py-24 px-5 text-center">
             {error}
             <button
               onClick={() => HandleShow()}
@@ -109,7 +109,7 @@ export const Handles = ({error,HandleShow,signedIn }:props) => {
       )}
       {signedIn && (
         <div className="centerd flex-col  fixed top-0 left-0 w-full h-full bg-black bg-opacity-80 z-50">
-          <div className=" text-4xl text-white flex mobile:text-xl rounded-md flex-col items-center  gap-y-4 bg-[#00695c] opacity-[.96] shadow-black shadow-md absolut  py-20 px-5 text-center ">
+          <div className=" text-4xl text-white flex mobile:text-xl rounded-md flex-col items-center  gap-y-4 bg-[#00695c] opacity-[.96] shadow-black shadow-md  py-20 px-5 text-center ">
             Signed up successfully! <BiSolidUserCheck size={40} />
           </div>
         </div>

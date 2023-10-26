@@ -33,7 +33,9 @@ const Login = () => {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     if (userCredential.user) {
       setLoggedIn(true);
+      setTimeout(() => {
       navigate("/*");
+      }, 2000);
     }
   } catch (err: any) {
     const handleError = handleAuthError(err);
