@@ -1,20 +1,10 @@
 import axios, { AxiosResponse } from "axios";
-
-import {
-  Cast,
-  Episode,
-  Film,
-  Genre,
-  Season,
-  Trailer,
-  MediaType,
-} from "../Interfaces";
-
+import {Cast,Episode,Film,Genre,Season,Trailer,MediaType,} from "../Interfaces";
 import { formatResult } from "../utilies";
+
 const axiosClient = axios.create({
   baseURL: "https://api.themoviedb.org/3",
 });
-
 axiosClient.interceptors.request.use((config) => {
   return {
     ...config,
@@ -33,12 +23,10 @@ export const getTrendings = async (mediaType: MediaType): Promise<Film[]> => {
         results: unknown[];
       }>
     >(`/trending/${mediaType}/day`);
-
     return data.results.map((val) => formatResult(val, mediaType));
   } catch (error) {
     console.error(error);
   }
-
   return [];
 };
 

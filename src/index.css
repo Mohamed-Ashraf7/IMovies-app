@@ -95,3 +95,29 @@ body {
   transition-delay: 200ms;
   transform: scale(1) rotate(360deg);
 }
+
+@layer components {
+  .centerd {
+    @apply flex  items-center justify-center;
+  }
+  .inputSign {
+   @apply rounded-sm text-black font-serif  shadow-black px-2 py-2 min-w-[280px] m-2 shadow-sm  focus:border-primary  focus:outline-none;
+  }
+  .inputLogin {
+    @apply rounded-sm px-2 py-2 min-w-[280px] text-black border-[1px] border-blue-400 m-2 mt-5 shadow-md shadow-gray-400 focus:shadow-2xl focus:border-primary focus:outline-none
+  }
+  .mainButton{
+    @apply  shadow-lg shadow-black border-none  px-7  font-extrabold transition-all delay-[1] ease-in hover:scale-110 hover:shadow-2xl hover:shadow-teal-500  mobile:text-lg;
+  }
+  .LoginBtn{
+   @apply  -mt-1 whitespace-nowrap shadow-md mobile:px-5 font-bold transition-all ease-out md:mt-1.5;
+  }
+  .menuClass{
+    @apply active:bg-slate-700  rounded-md border-none bg-white text-primary px-7 py-3 text-base font-extrabold  transition-all delay-[1] ease-in hover:bg-gray-500 hover:scale-110 hover:text-white hover:shadow-2xl hover:shadow-teal-500 
+  mobile:px-5;
+  }
+   .mobileNav{
+    @apply mobile:fixed mobile:rounded-[10px] mobile:border-t-2 mobile:justify-center mobile:items-center mobile:py-3 mobile:bg-header border-primary mobile:bottom-0 mobile:left-0 mobile:right-0 ;
+   }
+
+}

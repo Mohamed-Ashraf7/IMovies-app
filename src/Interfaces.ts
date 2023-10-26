@@ -68,7 +68,16 @@ export type AuthGuardProps = {
 export type AuthError = {
   code: string;
 };
-
+export interface User {
+  uid: string;
+  displayName: string | null;
+  email: string | null;
+}
+export interface AuthContextType {
+  user: User | null;
+  signOut: () => Promise<void>;
+  signInWithGoogle: () => Promise<void>;
+}
 export interface StarRatingProps {
   rating: number; // Rating value (e.g., 3.5, 4.0)
   maxStars?: number; // Optional: Maximum number of stars (default is 5)
@@ -77,3 +86,7 @@ export type LayoutTypes = {
   name: [name: string, setName: React.Dispatch<React.SetStateAction<string>>];
 };
 export type Theme = "dark" | "light";
+export interface Toggle{
+   toggleTheme: () => void
+  handleClose: () => void;
+}

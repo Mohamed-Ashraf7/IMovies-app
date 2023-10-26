@@ -20,7 +20,6 @@ export const SearchResult = (props: Props) => {
 
   const fetch = async () => {
     if (!props.keyword) return;
-
     clearTimeout(searchTimeout.current);
     searchTimeout.current = setTimeout(async () => {
       const res = await search(props.keyword);
@@ -46,7 +45,6 @@ export const SearchResult = (props: Props) => {
               src={tmdbImageSrc(film.posterPath)}
               className="max-h-[100px] max-w-[100px] rounded-md object-cover"
             ></Image>
-            {/* title and genres */}
             <div className="px-3 truncate">
               <p className="text-base truncate text-white">{film.title}</p>
               <ul className="flex flex-wrap gap-x-1.5 text-sm opacity-[0.7]">
@@ -54,9 +52,7 @@ export const SearchResult = (props: Props) => {
                   <li key={i} className="text-gray-300">
                     {
                       globalContext.genres[film.mediaType].find(
-                        (g) => g.id === id
-                      )?.name
-                    }{" "}
+                        (g) => g.id === id)?.name}
                     {i !== film.generIds.length - 1 ? "," : ""}
                   </li>
                 ))}
@@ -68,8 +64,7 @@ export const SearchResult = (props: Props) => {
           <button
             onClick={() => props.goToSearchPage()}
             className="px-3 py-2 bg-primary w-full rounded-md sticky bottom-[0.5px]  right-0 hover:text-body shadow-lg text-white"
-          >
-            More results
+          > More results
           </button>
         )}
       </div>

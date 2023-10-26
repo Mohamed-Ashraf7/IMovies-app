@@ -31,15 +31,12 @@ const Season = () => {
     <div
       className={`relative ${
         theme === "light" ? "bg-dark text-light" : "bg-light text-dark"
-      }`}
-    >
-      {/* background */}
+      }`}>
       <div className="h-[350px] left-0 right-0 -top-[88px] relative">
         <div className="overlay-film-cover"></div>
         <Image
           className="rounded-0 rounded-none object"
-          src={tmdbImageSrc(season.posterPath)}
-        ></Image>
+          src={tmdbImageSrc(season.posterPath)}></Image>
       </div>
       <Section className="-mt-[360px] flex items-center absolute z-10 mobile:block">
         <Image
@@ -63,12 +60,10 @@ const Season = () => {
         {season.episodes.map((episode, i) => (
           <div
             className="my-6 flex items-start justify-center gap-4 rounded-md overflow-hidden cursor-pointer hover:bg-header px-3 py-1.5 mobile:block"
-            key={i}
-          >
+            key={i}>
             <Image
               src={tmdbImageSrc(episode.stillPath)}
-              className="max-w-[400px] h-[220px]"
-            ></Image>
+              className="max-w-[400px] h-[220px]"></Image>
             <div className="overflow-hidden flex flex-col gap-3 mobile:py-3">
               <p className="text-2xl text-primary bg-white rounded-md p-2 max-w-fit truncate">
                 {episode.episodeNumber}. {episode.title}

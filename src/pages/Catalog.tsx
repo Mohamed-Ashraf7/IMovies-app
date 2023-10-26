@@ -1,11 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import {
-  useLocation,
-  useNavigate,
-  useParams,
-  useSearchParams,
+import {useLocation,useNavigate,useParams,useSearchParams,
 } from "react-router-dom";
-import bg from "../assets/auke-bakker-CTTJHNwbtPg-unsplash.jpg";
+import bg from "../assets/catalog.webp";
 import { useTheme } from "../api/Theme";
 import { discover, getTopRated, search } from "../api/tmdb-api";
 import Card from "../components/Card";
@@ -40,20 +36,16 @@ const Catalog = (props: Props) => {
       title = "Movies";
       request = (page: number) => discover("movie", page);
       break;
-
     case "tv":
       title = "TV";
       request = (page: number) => discover("tv", page);
       break;
-
     case "search":
       title = `Search results for <i>${params.get("q")}</i>`;
       request = (page: number) => search(params.get("q") || "", page);
       break;
-
     case "list":
       title = listTitle as string;
-
       if (title === "top-rated-tv") {
         request = (page: number) => getTopRated("tv", page);
       } else if (title === "top-rated-movies") {
@@ -79,7 +71,6 @@ const Catalog = (props: Props) => {
 
   const onWindowScroll = () => {
     if (loadingRef.current) return;
-
     if (window.innerHeight + window.scrollY >= document.body.scrollHeight) {
       if (totalPage.current > page.current) {
         page.current++;
@@ -92,10 +83,8 @@ const Catalog = (props: Props) => {
     setFilms([]);
     fetch();
   }, [location]);
-
   useEffect(() => {
     window.addEventListener("scroll", onWindowScroll);
-
     return () => {
       window.removeEventListener("scroll", onWindowScroll);
     };
@@ -104,17 +93,13 @@ const Catalog = (props: Props) => {
     <div
       className={`${
         theme === "light" ? "bg-dark text-light" : "bg-light text-dark"
-      }`}
-    >
+      }`}>
       {/* background */}
       <div
-        className="h-[300px]  left-0 right-0 -top-[88px] relative flex items-end py-10 justify-center"
+        className="h-[300px] bg-cover left-0 right-0 -top-[88px] relative flex items-end py-10 justify-center"
         style={{
           backgroundImage: ` url(${bg})`,
-          backgroundPosition: "center 60%",
-          backgroundSize: "cover",
-        }}
-      >
+          backgroundPosition: "center 60%",}}>
         <h2 className="text-5xl bg-opacity-10 mobile:text-2xl p-2 bg-white rounded-md text-white">
           {" "}
           Take Me To The Moon . . .{" "}
@@ -123,8 +108,7 @@ const Catalog = (props: Props) => {
       {/* PAGE TITLE */}
       <Section
         className="-mt-[90px] flex items-center relative z-10"
-        title={title}
-      ></Section>
+        title={title}></Section>
       {/* Films */}
       <Section>
         <div className="grid lg:grid-cols-4 md:grid-cols-3 mobile:grid-cols-2 relative z-[11]">
@@ -133,10 +117,8 @@ const Catalog = (props: Props) => {
               <Card
                 onClick={() => navigate(`/${film.mediaType}/${film.id}`)}
                 imageSrc={tmdbImageSrc(film.posterPath)}
-                title={film.title}
-                vote={film.voteAverage}
-                key={i}
-              ></Card>
+                title={film.title} vote={film.voteAverage}
+                key={i}></Card>
             </div>
           ))}
         </div>
