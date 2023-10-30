@@ -2,6 +2,7 @@ import { FaFacebook, FaGoogle, FaGithub } from "react-icons/fa";
 import { BiSolidUserCheck } from "react-icons/bi";
 import { AuthError } from "../Interfaces";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { useTheme } from "../api/Theme";
 import Section from "./Section";
 interface props {
   error: string | null | undefined;
@@ -34,7 +35,10 @@ export const handleAuthError = (error:AuthError) => {
   return errorCode;
 };
 export const LatestMovies = () => {
-  return (  <div className="centerd py-12  px-5 gap-x-20 mobile:px-6 w-full flex-col-reverse  bg-[#1a1a1a]   md:flex-row  ">
+  const { theme } = useTheme();
+  return (  <div
+  className={`${ theme === "light" ? "": "bg-[#f3f4f6] text-dark"
+  } centerd py-12 px-5 gap-x-20 mobile:px-6 w-full flex-col-reverse md:flex-row`}>
         <div className="m-auto my-2  w-auto centerd md:m-0 md:ml-10 md:h-auto md:w-auto">
           <LazyLoadImage
             src="https://upload.wikimedia.org/wikipedia/en/1/1c/Transformers-_Rise_of_the_Beasts.jpg"
@@ -64,13 +68,16 @@ export const LatestMovies = () => {
       </div>)
 }
 export const Mail = () => {
+   const { theme } = useTheme();
   return (
-      <Section className="centerd mobile:flex-col my-14 bg-black gap-6 min-h-[270px] ">
+   <Section
+  className={`${theme === "light"? "bg-header text-light": "bg-[#f3f4f6] text-dark"
+  } centerd mobile:flex-col my-14 gap-6 min-h-[270px]`}>
         <div>
-          <h2 className="lg:text-[44px] text-2xl py-2 text-white mobile:text-center">
+          <h2 className="lg:text-[44px] text-2xl py-2  mobile:text-center">
             TRIAL START FIRST 30 DAYS.
           </h2>
-          <p className="text-gray-400 text-center text-lg ">
+          <p className="text-gray-500 text-center text-lg ">
             Enter your email to create or restart your membership
           </p>
         </div>
@@ -84,7 +91,8 @@ export const Mail = () => {
             Continue{" "}
           </button>
         </div>
-      </Section>)
+      </Section >
+      )
 }
   export const isEmailValid = (email: string): boolean => {
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;

@@ -1,12 +1,12 @@
 import { createContext, useContext, useEffect, useState, lazy} from "react";
 import { BrowserRouter } from "react-router-dom";
-import { getGenres } from "../api/tmdb-api";
-import { Genre } from "../Interfaces";
-import { MediaType } from "../Interfaces";
-import { ThemeProvider } from "../api/Theme";
-import { AuthProvider } from "../api/AuthContext";
-const TOP = lazy(() => import("../components/Top"));
-const Routing=lazy(()=>import("../Layouts/Routing")) ;
+import { getGenres } from "./api/tmdb-api";
+import { Genre } from "./Interfaces";
+import { MediaType } from "./Interfaces";
+import { ThemeProvider } from "./api/Theme";
+import { AuthProvider } from "./api/AuthContext";
+import Routing from "./Layouts/Routing";
+const TOP = lazy(() => import("./components/Top"));
 type Genres = {
   [key in MediaType]: Genre[];
 };

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { search } from "../api/tmdb-api";
 import { Film } from "../Interfaces";
 import { tmdbImageSrc } from "../utilies";
-import { useGlobalContext } from "./App";
+import { useGlobalContext } from "../App";
 import Image from "./Image";
 
 interface Props {

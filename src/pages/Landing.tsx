@@ -63,7 +63,9 @@ export function Landing() {
           />
         </div>
       </div>
+      <div className="bg-[#0a0a0a]">
       <LatestMovies />
+</div>
       <Mail />
       <div className="bg-header h-[40px]"></div>
       <Footer />

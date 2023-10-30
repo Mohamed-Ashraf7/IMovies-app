@@ -4,7 +4,7 @@ import { getCasts,getDetail,getRecommendations,getTrailers,
 } from "../api/tmdb-api";
 import { useTheme } from "../api/Theme";
 import { FaStar } from "react-icons/fa";
-import { useGlobalContext } from "../components/App";
+import { useGlobalContext } from "../App";
 import Card from "../components/Card";
 import Image from "../components/Image";
 import Section from "../components/Section";

@@ -105,7 +105,7 @@ const Home = () => {
         hidden={populars.length === 0}
         className={`${
           theme === "light" ? "bg-header text-light" : " bg-[#f3f4f6] text-dark"
-        }`}>
+        } `}>
         <Slider isMovieCard={true} num={3}>
           {(_) =>
             populars.map((film, i) => (
@@ -167,12 +167,7 @@ const Home = () => {
               ></TrendingHero>))}
         </Slider>
       </Section>
-      <Section
-        className={`${
-          theme === "light" ? "bg-header text-light" : "bg-[#f3f4f6] text-dark"
-        } flex mobile:flex-col items-center justify-between min-h-[250px] my-5`}>
          <Mail />
-      </Section>
       <div className="h-[40px]"></div>
     </div>
      <UserProfile/></>

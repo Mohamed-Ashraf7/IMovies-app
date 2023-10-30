@@ -2,12 +2,12 @@ import { Routes, Route } from "react-router-dom";
 import { lazy ,Suspense} from "react";
 import AuthGuard from "../components/AuthGuard";
 import Home from "../pages/Home";
-const Film =  lazy(() => import("../pages/film"))
-const Loading = lazy(() => import("../components/Loading"));
+import Login from "../components/Login";
+import SignUp from "../components/SignUp";
+import Film from "../pages/film";
+import Loading from "../components/Loading";
 const Catalog = lazy(() => import("../pages/Catalog"));
 const Season = lazy(() => import("../pages/Season"));
-const Login = lazy(() => import("../components/Login"));
-const SignUp = lazy(() => import("../components/SignUp"));
 const Landing = lazy(() => import("../pages/Landing"));
 const Header = lazy(() => import("../Layouts/Header"));
 const Footer = lazy(() => import("../Layouts/Footer"));

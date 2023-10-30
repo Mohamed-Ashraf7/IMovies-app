@@ -41,11 +41,11 @@ const SignUp = () => {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, pass);
       const user = userCredential.user;
-      if (user) {
+      if (userCredential.user) {
         setSignedIn(true);
         setTimeout(() => {
       navigate("/*");
-      }, 2000);
+      }, 1000);
         await setDoc(doc(db, "users", user.uid), {
           email: email,
           fullname: fullname,
