@@ -4,7 +4,7 @@ import Header from "../../Layouts/Header";
 import Footer from "../../Layouts/Footer";
 import UserProfile from "../../components/User";
 import Home from "./Home";
-const Film =lazy(()=>import( "../Film"));
+const Film  = lazy(()=>import( "../Film"));
 const Catalog = lazy(() =>import("../Catalog"));
 const Season = lazy(() =>import("../Season"));
 const Main = () => {
