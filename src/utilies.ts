@@ -43,7 +43,7 @@ export const tmdbImageSrc = (path: string) => {
   return `https://image.tmdb.org/t/p/original/${path}`;
 };
 
-export const mergeFilms = (movies: Film[], tvs: Film[], limit = 6) => {
+export const mergeFilms = (movies: Film[], tvs: Film[], limit = 10) => {
   const arrs: Film[] = [];
 
   for (let i = 0; i < limit; i++) {
@@ -74,3 +74,4 @@ export const formatDate = (val: string) => {
 
   return d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
 };
+

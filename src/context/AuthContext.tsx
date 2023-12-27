@@ -1,10 +1,9 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { onAuthStateChanged, signOut,signInWithPopup, } from 'firebase/auth';
-
+import { createContext, useContext, useState, useEffect, ReactNode, useMemo } from 'react';
+import { onAuthStateChanged, signOut,signInWithPopup } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { User, AuthContextType } from "../Interfaces";
-
 import { auth, googleProvider } from "../firebase";
+
 const initialAuthContext: AuthContextType = {
   user: null,
   signOut: async () => { },
@@ -20,11 +19,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   useEffect(() => {
   const unsubscribe = onAuthStateChanged(auth, (authUser) => {
     if (authUser) {
-      setUser({
-        uid: authUser.uid,
-        displayName: authUser.displayName,
-        email: authUser.email,
-      });
+      setUser(authUser);
     } else {
       setUser(null);
     }
@@ -39,13 +34,17 @@ const handleSignOut = async () => {
  const signInWithGoogle = async () => {
   try {
     await signInWithPopup(auth, googleProvider);
-  } catch (err) {
-    console.error(err);
+     navigate("/*");
+  } catch (error) {
+    console.error("Error during Google sign-in:", error);
   }
 };
+  const value = useMemo(() => ({
+    user, signOut: handleSignOut, signInWithGoogle
+  }), [user]);
 
   return (
-    <AuthContext.Provider value={{ user, signOut: handleSignOut,signInWithGoogle }}>
+    <AuthContext.Provider value={value}>
       {children}
     </AuthContext.Provider>
   );

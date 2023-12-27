@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import { GiReturnArrow } from "react-icons/gi";
+import { useLocation } from 'react-router-dom';
+
 const TOP = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { pathname } = useLocation();
   const handleScroll = () => {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     setIsVisible(scrollTop > 50);
@@ -14,9 +17,13 @@ const TOP = () => {
     });
   };
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+    window.removeEventListener("scroll", handleScroll);
     };
   }, []);
   return (

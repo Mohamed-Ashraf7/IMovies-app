@@ -6,7 +6,8 @@ import { Link, useNavigate } from "react-router-dom";
 import {signInWithEmailAndPassword} from "firebase/auth";
 import { auth } from "../firebase";
 import { Handles, Socials,isEmailValid ,handleAuthError} from "./handling";
-import { useAuth } from "../api/AuthContext";
+import { useAuth } from "../context/AuthContext";
+
 const Login = () => {
    const { signInWithGoogle } = useAuth();
   const navigate = useNavigate();
@@ -29,15 +30,16 @@ const Login = () => {
   const logIn = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
   e.preventDefault();
   setError(null);
-  try {
-    const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    if (userCredential.user) {
-      setLoggedIn(true);
-      setTimeout(() => {
-      navigate("/*");
-      }, 2000);
-    }
-  } catch (err: any) {
+    try {
+     await signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          setLoggedIn(true);
+          setTimeout(() => {
+          navigate("/main");
+           }, 1000);
+         })
+     } catch (err: any) {
     const handleError = handleAuthError(err);
     setError(handleError);
     console.error("Error during login:", err);
@@ -52,18 +54,18 @@ const Login = () => {
       style={{backgroundImage: `linear-gradient(270deg, #000, #0005) , url(${bg})`,}}>
       <main className="centerd px-2 overflow-hidden md:px-10">
         <div
-          className="w-[450px] h-[570px] hidden bg-center bg-cover shadow-lg py-10 lg:mt-4 shadow-black  lg:inline-flex flex-col items-center justify-between "
+          className="w-[450px] h-[570px] hidden  md:inline-flex flex-col items-center justify-between bg-center bg-cover shadow-lg py-10 lg:mt-4 shadow-black  "
           style={{backgroundImage: `url(${bg1})`}}>
           <Link
             to={"/*"}
-            className="lg:text-[80px] text-2xl align-center text-white font-bold">
+            className="text-7xl  align-center text-white font-bold">
             I Movies
           </Link>
           <p className="font-medium text-xl px-2 text-gray-100 text-center">
             Explore your interests, Meet new Movies & expand your horizons
           </p>
         </div>
-        <form className="bg-white rounded-sm lg:mt-4 shadow-lg shadow-black  centerd flex-col md:w-[450px] h-[570px] w-screen  transition duration-1000 ease-out">
+        <form className="bg-white rounded-sm lg:mt-4 shadow-lg shadow-black  centerd flex-col md:w-[450px] h-[570px] w-screen ">
           <Link to={"/*"} className="mt-6 mb-3 text-4xl font-bold text-primary">
             I Movies
           </Link>
@@ -73,7 +75,7 @@ const Login = () => {
           <input type="email" name="email" className="inputLogin" placeholder="your E-mail"
             onChange={(e) => setEmail(e.target.value)} required />
           <input type="password" name="password" onChange={(e) => setPassword(e.target.value)}
-            placeholder=" your password" className="inputLogin"required/>
+            placeholder=" your password" className="inputLogin" required/>
           <button onClick={logIn} type="submit" disabled={isDisabled} className={`${
               isDisabled ? "cursor-not-allowed " : "bg-black text-gray-200"
             } rounded-md m-2 text-white bg-blue-600 w-2/4 px-2 py-3 shadow-md shadow-black hover:bg-primary transition duration-200 ease-in"`} >
@@ -85,7 +87,7 @@ const Login = () => {
             Don't have an account ?
           </Link>
           <div className="mx-auto my-3 h-[0.5px] w-full border-t-2 border-zinc-700 md:w-80">
-            <p className="mx-auto centerd -mt-[20px] h-8 w-10  bg-blue-500 rounded-md text-base ">
+            <p className="mx-auto centerd text-white -mt-[20px] h-8 w-10  bg-blue-500 rounded-md text-base ">
               OR</p>
           </div>
           <button

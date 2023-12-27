@@ -40,6 +40,11 @@
       "react-app/jest"
     ]
   },
+  "config": {
+    "build": {
+      "maxAge": "30 * 24 * 60 * 60 * 1000"
+    }
+  },
   "browserslist": {
     "production": [
       ">0.2%",

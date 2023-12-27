@@ -1,25 +1,22 @@
-import { useEffect, useRef, useState } from "react";
-import {useLocation,useNavigate,useParams,useSearchParams,
-} from "react-router-dom";
 import bg from "../assets/catalog.webp";
-import { useTheme } from "../api/Theme";
-import { discover, getTopRated, search } from "../api/tmdb-api";
 import Card from "../components/Card";
 import Section from "../components/Section";
+import { useEffect, useRef, useState } from "react";
+import {useLocation,useNavigate,useSearchParams} from "react-router-dom";
+import { useTheme } from "../context/Theme";
 import { MediaType, Film } from "../Interfaces";
 import { tmdbImageSrc } from "../utilies";
-
+import { useMovieContext } from "../context/MovieContext";
 interface Props {
   type: MediaType | "search" | "list";
 }
-
 const Catalog = (props: Props) => {
   let title = "";
   let request: (page: number) => Promise<{
     totalPages: number;
     films: Film[];
   }>;
-
+  const { discover, search } = useMovieContext();
   const [films, setFilms] = useState<Film[]>([]);
   const [params, _] = useSearchParams();
   const page = useRef(1);
@@ -29,7 +26,7 @@ const Catalog = (props: Props) => {
   const [onLoading, setOnLoading] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const { listTitle } = useParams<any>();
+  // const { listTitle } = useParams<any>();
 
   switch (props.type) {
     case "movie":
@@ -44,27 +41,15 @@ const Catalog = (props: Props) => {
       title = `Search results for <i>${params.get("q")}</i>`;
       request = (page: number) => search(params.get("q") || "", page);
       break;
-    case "list":
-      title = listTitle as string;
-      if (title === "top-rated-tv") {
-        request = (page: number) => getTopRated("tv", page);
-      } else if (title === "top-rated-movies") {
-        request = (page: number) => getTopRated("movie", page);
-      }
-      break;
     default:
       break;
   }
-
   const fetch = async () => {
     loadingRef.current = true;
     setOnLoading(true);
-
     const { films, totalPages } = await request(page.current);
-
     setOnLoading(false);
     loadingRef.current = false;
-
     totalPage.current = totalPages;
     setFilms((arrs) => [...arrs, ...films]);
   };
@@ -94,7 +79,6 @@ const Catalog = (props: Props) => {
       className={`${
         theme === "light" ? "bg-dark text-light" : "bg-light text-dark"
       }`}>
-      {/* background */}
       <div
         className="h-[300px] bg-cover left-0 right-0 -top-[88px] relative flex items-end py-10 justify-center"
         style={{
@@ -102,10 +86,9 @@ const Catalog = (props: Props) => {
           backgroundPosition: "center 60%",}}>
         <h2 className="text-5xl bg-opacity-10 mobile:text-2xl p-2 bg-white rounded-md text-white">
           {" "}
-          Take Me To The Moon . . .{" "}
+          Take Me To Away with Movies . . .{" "}
         </h2>
       </div>
-      {/* PAGE TITLE */}
       <Section
         className="-mt-[90px] flex items-center relative z-10"
         title={title}></Section>
@@ -117,7 +100,9 @@ const Catalog = (props: Props) => {
               <Card
                 onClick={() => navigate(`/${film.mediaType}/${film.id}`)}
                 imageSrc={tmdbImageSrc(film.posterPath)}
-                title={film.title} vote={film.voteAverage}
+                title={film.title} 
+                release={film.releaseDate}
+                vote={film.voteAverage}
                 key={i}></Card>
             </div>
           ))}

@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getSeason } from "../api/tmdb-api";
 import Image from "../components/Image";
 import Section from "../components/Section";
 import { Season as SeasonInterface } from "../Interfaces";
 import { formatDate, tmdbImageSrc } from "../utilies";
-import { useTheme } from "../api/Theme";
+import { useTheme } from "../context/Theme";
+import { useMovieContext } from "../context/MovieContext";
 const Season = () => {
   const [season, setSeason] = useState<SeasonInterface | null>(null);
+  const { getSeason} = useMovieContext();
   const { theme } = useTheme();
   const params = useParams<any>();
 
@@ -19,7 +20,7 @@ const Season = () => {
       )
     );
   };
-
+  
   useEffect(() => {
     fetch();
   }, []);
@@ -38,10 +39,10 @@ const Season = () => {
           className="rounded-0 rounded-none object"
           src={tmdbImageSrc(season.posterPath)}></Image>
       </div>
-      <Section className="-mt-[360px] flex items-center absolute z-10 mobile:block">
+      <div className="-mt-[360px] flex items-center absolute z-10 mobile:block">
         <Image
           src={tmdbImageSrc(season.posterPath)}
-          className="max-w-[350px] mobile:max-w-[200px] mobile:max-h-[300px] max-h-[430px] mobile:mx-auto"
+          className="md:ms-2 max-w-[350px] mobile:max-w-[200px] mobile:max-h-[300px] max-h-[430px] mobile:mx-auto"
         ></Image>
         <div className="px-3 flex flex-col items-start mobile:items-center gap-3 mt-20 mobile:mt-2">
           <p className="text-4xl line-clamp-1">{season.filmName}</p>
@@ -54,7 +55,7 @@ const Season = () => {
             </p>
           </div>
         </div>
-      </Section>
+      </div>
       {/* episodes */}
       <Section title="Episodes" className="mt-14">
         {season.episodes.map((episode, i) => (

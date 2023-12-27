@@ -2,11 +2,13 @@
 @tailwind utilities;
 @tailwind components;
 
+* {
+  scroll-behavior: smooth;
+}
 body,
 html {
   width: 100%;
   height: 100%;
-  scroll-behavior: smooth;
 }
 body {
   font-family: "Croissant One", sans-serif;
@@ -26,6 +28,9 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+button[aria-hidden] {
+  visibility: true;
 }
 
 .overlay-slick-hero {
@@ -56,14 +61,12 @@ body {
 }
 .toggle {
   border-bottom: 2px solid theme("colors.primary");
-
   width: 45px;
   height: 35px;
   border-radius: 30%;
   display: grid;
   place-items: center;
   cursor: pointer;
-
   line-height: 1;
 }
 
@@ -101,23 +104,19 @@ body {
     @apply flex  items-center justify-center;
   }
   .inputSign {
-   @apply rounded-sm text-black font-serif  shadow-black px-2 py-2 min-w-[280px] m-2 shadow-sm  focus:border-primary  focus:outline-none;
+    @apply rounded-sm text-black font-serif  shadow-black px-2 py-2 min-w-[280px] m-2 shadow-sm  focus:border-primary  focus:outline-none;
   }
   .inputLogin {
-    @apply rounded-sm px-2 py-2 min-w-[280px] text-black border-[1px] border-blue-400 m-2 mt-5 shadow-md shadow-gray-400 focus:shadow-2xl focus:border-primary focus:outline-none
+    @apply rounded-sm px-2 py-2 min-w-[280px] text-black border-[1px] border-blue-400 m-2 mt-5 shadow-md shadow-gray-400 focus:shadow-2xl focus:border-primary focus:outline-none;
   }
-  .mainButton{
-    @apply  shadow-lg shadow-black border-none  px-7  font-extrabold transition-all delay-[1] ease-in hover:scale-110 hover:shadow-2xl hover:shadow-teal-500  mobile:text-lg;
+  .mainButton {
+    @apply shadow-lg font-semibold shadow-black px-7 rounded-md transition-all delay-[1] ease-in hover:scale-110 hover:shadow-2xl hover:shadow-teal-500;
   }
-  .LoginBtn{
-   @apply  -mt-1 whitespace-nowrap shadow-md mobile:px-5 font-bold transition-all ease-out md:mt-1.5;
-  }
-  .menuClass{
+  .menuClass {
     @apply active:bg-slate-700  rounded-md border-none bg-white text-primary px-7 py-3 text-base font-extrabold  transition-all delay-[1] ease-in hover:bg-gray-500 hover:scale-110 hover:text-white hover:shadow-2xl hover:shadow-teal-500 
   mobile:px-5;
   }
-   .mobileNav{
-    @apply mobile:fixed mobile:rounded-[10px] mobile:border-t-2 mobile:justify-center mobile:items-center mobile:py-3 mobile:bg-header border-primary mobile:bottom-0 mobile:left-0 mobile:right-0 ;
-   }
-
+  .mobileNav {
+    @apply mobile:fixed mobile:rounded-[10px] mobile:border-t-2  mobile:py-3 mobile:bg-header border-primary mobile:bottom-0 mobile:left-0 mobile:right-0;
+  }
 }

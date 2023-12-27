@@ -1,20 +1,16 @@
 import bg from "../assets/signup.webp";
-import bg1 from "../assets/signup.webp";
 import { Link, useNavigate } from "react-router-dom";
-import { auth,db} from "../firebase";
+import {auth} from "../firebase";
 import { useCallback, useEffect, useState } from "react";
 import {createUserWithEmailAndPassword} from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
 import googleLogo from "../assets/icons8-google-48.png";
 import { Handles, Socials,isEmailValid,handleAuthError } from "./handling";
-import { useAuth } from "../api/AuthContext";
+import { useAuth } from "../context/AuthContext";
 
 const SignUp = () => {
   const { signInWithGoogle } = useAuth();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
-  const [confirmPass, setConfirmPass] = useState("");
-  const [passwordError, setPasswordError] = useState("");
   const [fullname, setFullName] = useState("");
   const [error, setError] = useState<string | undefined | null>("");
   const [signedIn, setSignedIn] = useState(false);
@@ -23,35 +19,24 @@ const SignUp = () => {
   const navigate = useNavigate();
   
   const formValidation = useCallback(() => {
-    if (
-      (!isEmailValid(email) ||
-        email.length === 0 ||pass.length < 5 ||fullname.length === 0,
-      pass !== confirmPass) ) {
+    if (!isEmailValid(email) || email.length === 0
+      || pass.length < 5 || fullname.length === 0) {
       setIsDisabled(true);
-      setPasswordError("Password don't match");
     } else {
       setIsDisabled(false);
-      setPasswordError("");
     }
-  }, [email, fullname.length, confirmPass, pass]);
+  }, [email, fullname.length,pass]);
 
   const signUp = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     setError(null);
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, pass);
-      const user = userCredential.user;
-      if (userCredential.user) {
-        setSignedIn(true);
-        setTimeout(() => {
-      navigate("/*");
-      }, 1000);
-        await setDoc(doc(db, "users", user.uid), {
-          email: email,
-          fullname: fullname,
-          uid: user.uid,
-        });
-      }
+      await createUserWithEmailAndPassword(auth, email, pass)
+        .then((userCredential) => {
+            const user = userCredential.user;
+            setSignedIn(true);
+            navigate("/Login") 
+        })
     } catch (err: any) {
   const handleError = handleAuthError(err);
   setError(handleError);
@@ -77,16 +62,12 @@ const SignUp = () => {
           <input type="text" name="fullname" onChange={(e) => setFullName(e.target.value)}
             placeholder="Enter your full name"
             className="inputSign" required />
-          <input type="email" name="email" onChange={(e) => setEmail(e.target.value)}
+          <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter email address"
             className="inputSign" required />
-          <input type="password" name="password" onChange={(e) => setPass(e.target.value)}
+          <input type="password" name="password" value={pass} onChange={(e) => setPass(e.target.value)}
             placeholder="Enter your password"
             className="inputSign" required/>
-          <input type="password"  name="confirmpassword"  onChange={(e) => setConfirmPass(e.target.value)}
-            placeholder="Enter your password again"
-            className="inputSign" required/>
-          {passwordError && <p className="text-black">{passwordError}</p>}
           <button onClick={signUp} type="submit" disabled={isDisabled}
             className={`${
               isDisabled
@@ -115,7 +96,7 @@ const SignUp = () => {
         <div
           className="w-[450px] h-[570px] bg-cover bg-center hidden shadow-lg shadow-black py-10 lg:inline-flex flex-col items-center justify-between"
           style={{
-            backgroundImage: `url(${bg1})`}}>
+            backgroundImage: `url(${bg})`}}>
           <Link
             to={"/*"}
             className="lg:text-[90px] text-2xl text-primary font-bold">

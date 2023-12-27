@@ -1,5 +1,5 @@
 import React from "react";
-import { useAuth } from "../api/AuthContext";
+import { useAuth } from "../context/AuthContext";
 import { AuthGuardProps } from "../Interfaces";
 
 const AuthGuard: React.FC<AuthGuardProps> = ({

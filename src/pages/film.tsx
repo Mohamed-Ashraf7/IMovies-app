@@ -1,96 +1,111 @@
-import { useEffect, useState, lazy } from "react";
+import { useEffect, useState} from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { getCasts,getDetail,getRecommendations,getTrailers,
-} from "../api/tmdb-api";
-import { useTheme } from "../api/Theme";
+import { useMovieContext } from "../context/MovieContext";
+import { useTheme } from "../context/Theme";
 import { FaStar } from "react-icons/fa";
-import { useGlobalContext } from "../App";
 import Card from "../components/Card";
 import Image from "../components/Image";
 import Section from "../components/Section";
 import Slider from "../components/Slider/Slider";
-import { Cast, MediaType, Film as FilmData, Trailer } from "../Interfaces";
+import { Cast, Genre,MediaType, Film as FilmData, Trailer } from "../Interfaces";
 import { tmdbImageSrc, youtubeThumbnail } from "../utilies";
-const TrailerModal = lazy(() => import("../components/TrailerModal"));
-const Loading = lazy(() => import("../components/Loading"));
+import Loading from "../components/Loading";
+import TrailerModal from"../components/TrailerModal";
+type Genres = {
+  [key in MediaType]: Genre[];
+};
 interface Props {
   mediaType: MediaType;
 }
 const Film = (props: Props) => {
-  const location = useLocation();
-  const { theme } = useTheme();
+
   const navigate = useNavigate();
+  const { theme } = useTheme();
   const { id } = useParams<any>();
+  const location = useLocation();
+  const {getCasts,getDetail,getRecommendations,getTrailers,getGenres}=useMovieContext();
+  const [genres, setGenres] = useState<Genres>({movie: [],tv: []});
   const [film, setFilm] = useState<FilmData | null | undefined>(null);
   const [trailerSrc, setTrailerSrc] = useState("");
-  const playTrailer = async (key: string) => {
-    setTrailerSrc(`https://www.youtube.com/embed/${key}?autoplay=1`);};
   const [casts, setCasts] = useState<Cast[]>([]);
   const [trailers, setTrailers] = useState<Trailer[]>([]);
   const [recommendations, setRecommendations] = useState<FilmData[]>([]);
-  const globalContext = useGlobalContext();
-  const fetch = async () => {
+  
+  const playTrailer = async (key: string) => {
+    setTrailerSrc(`https://www.youtube.com/embed/${key}?autoplay=1`);
+   
+  };
+ 
+ const fetch =async () => {
     const film = await getDetail(props.mediaType, parseInt(id as string));
-    if (film) {
+    const movie = await getGenres("movie");
+    const tv = await getGenres("tv");
+   if (film) {
       setFilm(film);
       setCasts(await getCasts(film.mediaType, film.id));
       setTrailers(await getTrailers(film.mediaType, film.id));
       setRecommendations(await getRecommendations(film.mediaType, film.id));
-    }};
+      setGenres({movie,tv});
+   }
+ };
+  
   const closeTrailer = () => {
     setTrailerSrc("");
-  };
+     };
   useEffect(() => {
+    console.log("efeect two");
     setFilm(undefined);
     fetch();
+   
   }, [location]);
+ 
   if (film === null) {
-    // redirect to 404 page
-    return <></>;
+    return <span> Error : thier is no film Found</span>;
   } else if (film === undefined) {
     return (
       <div className="text-center p-6 h-full flex-1">
-        <Loading></Loading>
+        <Loading />
       </div>
     );
   }
-  const overview = film.overview;
-  const words = overview.split(" ");
-  const maxWords = 45;
-  const shortenedOverview = words.slice(0, maxWords).join(" ");
   
+  const words = film.overview.split(" ");
+  const shortenedOverview = words.slice(0, 45).join(" ");
+   
   return (
     <div
       className={`${
-        theme === "light" ? "bg-dark text-light" : "bg-light text-dark"
-      }`}>
+        theme === "light" ? "bg-dark text-light" : "bg-light text-dark"}`}>
       {trailerSrc && (
         <TrailerModal onHide={closeTrailer} src={trailerSrc}></TrailerModal>
       )}
       {/************ background ***********/}
-      <div
-        className="md:min-h-screen relative centerd bg-cover bg-center bg-no-repeat -top-[88px]"
-        style={{backgroundImage: `linear-gradient(290deg, #000, #0009), url(${tmdbImageSrc(
-            film.coverPath
-          )})`, }}>
+      <div className="min-h-screen relative centerd -top-[88px]">
+      <div className="absolute left-0 top-0 right-0 bottom-0 w-full">
+        <div className="overlay-slick-hero"></div>
+        <Image
+          src={tmdbImageSrc(film.coverPath)}
+          className=" w-full object-cover"
+        ></Image>
+        <div className="overlay-film-cover"></div>
+      </div>
         {/************ poster and text *****************/}
-        <Section className="flex w-full  lg:flex-row flex-col md:top-10  items-center justify-evenly mobile:justify-center relative z-10 px-2 mobile:px-0">
+        <div className="flex w-full  lg:flex-row flex-col md:top-10  items-center justify-evenly mobile:justify-center relative z-10 px-2 mobile:px-0">
           {" "}
           <Image
             src={tmdbImageSrc(film.posterPath)}
-            className="max-w-[350px] h-[300px] mobile:h-full mobile:w-full mobile:mt-[4.5rem] mobile:mx-auto shadow-xl shadow-neutral-700 "
+            className="max-w-[350px] mobile:w-[50%] h-[300px] mobile:h-full  mobile:mt-[4.6rem] mobile:mx-auto shadow-xl shadow-neutral-700 "
           ></Image>
           <div className="px-10 py-4  mobile:px-2 mobile:mx-0 flex flex-col items-start gap-y-3 mobile:border-none rounded-3xl  ">
-            <p className="text-5xl md:max-w-[700px]  tracking-widest font-extrabold bg-gradient-to-r from-white via-orange-400 to-gray-400 bg-clip-text my-1 line-clamp-2 mobile:text-3xl">
+            <p className="text-5xl md:max-w-[700px] w-full text-nowrap tracking-wide font-extrabold bg-gradient-to-r from-white via-orange-400 to-gray-400 bg-clip-text my-1 line-clamp-2 mobile:text-2xl">
               {film.title}
             </p>
-            <p className="text-sm mb-2  text-zinc-400">{film.tagline}</p>
+            <p className="text-sm mb-2 text-zinc-400">{film.tagline}</p>
             <ul className="flex items-center gap-3 ">
               {film.generIds.map((id, i) => (
                 <li  key={i}
-                  className="text-light px-3 py-2 bg-primary rounded-lg text-sm">
-                  {
-                    globalContext.genres[film.mediaType]?.find(
+                  className="text-light px-2 py-2 bg-primary rounded-lg text-sm">
+                  {genres[film.mediaType]?.find(
                       (g) => g.id === id)?.name }
                 </li>))}
             </ul>
@@ -118,7 +133,6 @@ const Film = (props: Props) => {
                 <p className=" border-b-2 bg-white text-black mobile:text-sm border-primary px-3 py-1 rounded-lg mx-1 shadow-md ">
                   {film.releaseDate}
                 </p>)}
-
               {casts && (
                 <p className="border-b-2 border-primary px-3 py-1 me-32 mobile:me-0 bg-white text-black rounded-lg mx-1 shadow-md">
                   <span className=" font-medium text-xl mobile:text-sm text-primary">
@@ -129,18 +143,17 @@ const Film = (props: Props) => {
               <p className="border-b-2 bg-white text-black mobile:text-sm border-primary px-3 py-1 rounded-lg mx-1 shadow-md ">
                 {film.runtime} min </p> )}
           </div>
-        </Section>
+        </div>
       </div>
       {/********************* Cast *****************/}
-      <Section title="Casts" hidden={casts.length === 0}>
+      <Section title="Casts" hidden={casts.length === 0} className="relative -top-10 py-0">
         <div className="scrollbar scrollbar-thumb-primary overflow-y-auto scrollbar-track-header">
-          <div className="flex items-center gap-2 ">
+          <div className="flex items-center gap-x-1 ">
             {casts.map((cast, i) => (
-              <div className="flex-shrink-0 w-[250px]" key={i}>
+              <div className="flex-shrink-0 w-[200px]" key={i}>
                 <Card key={i} withPlay={false}
                   imageSrc={tmdbImageSrc(cast.profilePath)}>
-                  <p className="font-semibold">{cast.name}</p>
-                  <p className="opacity-[0.9] text-sm">{cast.characterName}</p>
+                  <p className="font-semibold mx-auto">{cast.name}</p>
                 </Card>
               </div>
             ))}
@@ -148,40 +161,43 @@ const Film = (props: Props) => {
         </div>
       </Section>
       {/********************  Trailers *********************/}
-      <Section  title="Trailers"
+      <Section  title="Trailers" className="mobile:h-[200px] h-[300px] overflow-hidden"
         hidden={trailers.length === 0}>
-        <Slider isMovieCard={true} num={2}>
+        <Slider   isMovieCard={true} num={3}>
           {(_) =>
             trailers.map((trailer, i) => (
               <Card
+              className="max-w-[300px]"
                 onClick={() => playTrailer(trailer.key)}
                 imageSrc={youtubeThumbnail(trailer.key)}
                 key={i}
-              ></Card>))}
+              />))}
         </Slider>
       </Section>
       {/**************  Seasons ****************/}
-      <Section title="Seasons" hidden={film.seasons.length === 0}>
+      <Section title="Seasons"  hidden={film.seasons.length === 0}>
         <Slider
-          slidesToShow={film.seasons.length > 2 ? 2 : 1}
-          slidesToScroll={film.seasons.length > 2 ? 2 : 1}
+          slidesToShow={2}
+          slidesToScroll={1}
           swipe={false}>
           {(_) =>
             film.seasons.map((season, i) => (
-              <Card onClick={() =>
+              <Card className="md:h-[430px]" onClick={() =>
                   navigate(`/tv/${film.id}/season/${season.seasonNumber}`) }
                 title={season.name}
                 imageSrc={tmdbImageSrc(season.posterPath)}   key={i}
-              ></Card> )) }
+              /> )) }
         </Slider>
       </Section>
       {/*******************  Recommendations ******************/}
-
-      <Section title="Recomended" hidden={recommendations.length === 0}>
+     <Section title="Recomended" className="pb-20" hidden={recommendations.length === 0}>
         <Slider isMovieCard={true} num={4}>
           {(_) =>
             recommendations.map((film, i) => (
               <Card
+                className="space-x-1 md:h-[430px]"
+                release={film.releaseDate}
+                vote={film.voteAverage}
                 onClick={() => navigate(`/${props.mediaType}/${film.id}`)}
                 title={film.title}
                 imageSrc={tmdbImageSrc(film.posterPath)} key={i}></Card>))}

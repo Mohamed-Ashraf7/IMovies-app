@@ -1,11 +1,11 @@
 import { FaSpinner } from "react-icons/fa";
-import { memo } from "react";
-const Loading = memo(() => {
+
+const Loading = () => {
   return (
-    <div className="text-5xl flex items-center justify-center gap-3 my-10 ">
-      <FaSpinner className="animate-spin" size={30}></FaSpinner>
+    <div className="min-h-screen centerd text-5xl  gap-3 ">
+      <FaSpinner className="animate-spin" size={40}></FaSpinner>
       <span>Loading...</span>
     </div>
   );
-});
+};
 export default Loading;

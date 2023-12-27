@@ -17,11 +17,11 @@ export const Slider = (props: Props) => {
 
   if (props.isMovieCard) {
     settings = {
-      speed: 800,
-      autoplay: true,
-      autoplaySpeed: 3500,
+      speed: 500,
+      autoplay:false,
+      autoplaySpeed: 3000,
       cssEase: "linear",
-      pauseOnHover: true,
+      pauseOnHover: false,
       infinite: true,
       swipe: true,
       slidesToShow: props.num,
@@ -31,7 +31,7 @@ export const Slider = (props: Props) => {
           breakpoint: 1024,
           settings: {
             slidesToShow: 3,
-            slidesToScroll: 2,
+            slidesToScroll: 1,
           },
         },
         {
@@ -51,7 +51,7 @@ export const Slider = (props: Props) => {
       onSwipe={() => setOnSwipe(true)}
       afterChange={() => setOnSwipe(false)}
     >
-      {props.children ? props.children(onSwipe) : ""}
+      {props.children ? props.children(onSwipe) : null}
     </Slick>
   );
 };
