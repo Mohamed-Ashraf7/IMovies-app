@@ -17,7 +17,7 @@ type Genres = {
 interface Props {
   mediaType: MediaType;
 }
-const Film = (props: Props) => {
+const FilmDetails = (props: Props) => {
 
   const navigate = useNavigate();
   const { theme } = useTheme();
@@ -53,7 +53,6 @@ const Film = (props: Props) => {
     setTrailerSrc("");
      };
   useEffect(() => {
-    console.log("efeect two");
     setFilm(undefined);
     fetch();
    
@@ -207,4 +206,4 @@ const Film = (props: Props) => {
   );
 };
 
-export default Film;
+export default FilmDetails;

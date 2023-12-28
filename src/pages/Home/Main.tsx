@@ -4,7 +4,7 @@ import Header from "../../Layouts/Header";
 import Footer from "../../Layouts/Footer";
 import UserProfile from "../../components/User";
 import Home from "./Home";
-const Film  = lazy(()=>import( "../Film"));
+const FilmDetails  = lazy(()=>import( "../FilmDetails"));
 const Catalog = lazy(() =>import("../Catalog"));
 const Season = lazy(() =>import("../Season"));
 const Main = () => {
@@ -13,8 +13,8 @@ const Main = () => {
       <Header />
       <Routes>
         <Route path="/*" element={<Home />} />
-        <Route path="/movie/:id" element={<Film mediaType="movie" />} />
-        <Route path="/tv/:id" element={<Film mediaType="tv" />} />
+        <Route path="/movie/:id" element={<FilmDetails mediaType="movie" />} />
+        <Route path="/tv/:id" element={<FilmDetails mediaType="tv" />} />
         <Route path="/movies" element={<Catalog type="movie" />} />
         <Route path="/tv" element={<Catalog type="tv" />} />
         <Route path="/search" element={<Catalog type="search" />} />
