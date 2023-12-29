@@ -19,7 +19,6 @@ export const Slider = (props: Props) => {
     settings = {
       speed: 500,
       autoplay:false,
-      autoplaySpeed: 3000,
       cssEase: "linear",
       infinite: true,
       swipe: true,

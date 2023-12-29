@@ -1,8 +1,9 @@
-import { Fragment, lazy } from "react";
+import { Fragment, lazy,Suspense } from "react";
 import { Routes, Route} from "react-router-dom";
 import Header from "../../Layouts/Header";
 import Footer from "../../Layouts/Footer";
 import UserProfile from "../../components/User";
+import Loading from "../../components/Loading";
 import Home from "./Home";
 const FilmDetails  = lazy(()=>import( "../FilmDetails"));
 const Catalog = lazy(() =>import("../Catalog"));
@@ -11,6 +12,7 @@ const Main = () => {
   return (
     <Fragment>
       <Header />
+       <Suspense fallback={<Loading />}>
       <Routes>
         <Route path="/*" element={<Home />} />
         <Route path="/movie/:id" element={<FilmDetails mediaType="movie" />} />
@@ -19,7 +21,8 @@ const Main = () => {
         <Route path="/tv" element={<Catalog type="tv" />} />
         <Route path="/search" element={<Catalog type="search" />} />
         <Route path="/tv/:id/season/:seasonNumber" element={<Season />} />
-      </Routes>
+        </Routes>
+        </Suspense>
       <UserProfile />
       <Footer />
    </Fragment>

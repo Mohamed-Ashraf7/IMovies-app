@@ -25,13 +25,13 @@ const Landing = () => {
         <h2 className="text-5xl mobile:text-xl border-b-[6px] py-2 rounded-md border-primary font-extrabold">
           Bring unlimited Movies , TV Shows and more
         </h2>
-        <p className="text-3xl mobile:text-lg">
+        <p className="text-2xl mobile:text-lg">
           Watch Anywhere. Anytime. On any device
         </p>
         <img  src={image2} alt="imagetwo"
           className="w-auto h-full mobile:hidden block "/>
         <button onClick={() => HanldeShow()}
-          className="mainButton rounded-md mt-2 bg-primary py-6 text-lg">
+          className="mainButton rounded-md mt-2 bg-primary py-5 text-lg">
           Watch Now
         </button>
         <div className={`${
@@ -48,15 +48,15 @@ const Landing = () => {
           </div>
         </div>
       </div>
-      <div className="centerd h-auto  mobile:flex-col-reverse gap-x-20 bg-header py-12 px-5">
+      <div className="centerd h-auto  mobile:flex-col-reverse gap-x-20 bg-header py-12 px-7">
         <div className="flex flex-col justify-center gap-y-5">
           <p className=" text-center text-2xl font-extrabold xl:text-4xl">
             Watch Anywhere , Anytime
           </p>
-          <p className="px-4 max-w-xl text-justify mobile:text-center text-base lg:text-xl">
+          <p className="px-2 max-w-xl text-justify mobile:text-center text-base lg:text-xl">
             Our website is optimized for viewing on all your devices. Whether
             you're on your desktop, laptop, tablet, or smartphone, you can enjoy
-            the latest movies and trailers on-the-go
+            the latest movies and trailers on-the-go 
           </p>
         </div>
         <div className="h-auto w-auto px-2">

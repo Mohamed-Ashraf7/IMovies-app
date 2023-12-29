@@ -41,7 +41,7 @@ const Home = () => {
         <TopRated detailPage={detailPage} />
         <Actors />
          <Mail />
-      <div className="h-[40px]"></div>
+      <div className="h-[30px]"></div>
       </div>
       
     </Fragment>

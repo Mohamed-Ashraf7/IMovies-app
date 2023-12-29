@@ -6,11 +6,11 @@ export function Nav() {
     <nav
       className="centerd sticky top-0 z-50 h-[85px] w-full mobile:h-[74px] border-b-2 bg-dark rounded-lg mobile:px-6 px-20">
       <Link to="/*"
-        className="text-3xl font-bold text-white flex flex-row gap-x-2">
+        className="text-3xl font-bold text-white flex flex-row gap-x-10 ">
         <div className="h-auto w-[120px]">
           <img src={logo} alt="Logo" className="h-auto w-[120px]"/>
         </div>
-        IMovies
+        <span> IMovies</span>
       </Link>
       <div
         className="centerd w-full mobileNav mobile:gap-6 ">

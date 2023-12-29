@@ -17,7 +17,7 @@ export const TrendingHero = (props: TrendHeroProps) => {
         onClick={() => props.onClick()}
         style={{backgroundImage: `linear-gradient(290deg, #000, #0009),
          url(${tmdbImageSrc(props.film.coverPath)})` }}>
-      <div className="flex lg:mt-12 lg:flex-row flex-col gap-y-4 mt-[4rem] items-center justify-between lg:gap-x-20 relative z-10 max-w-[77%] mobile:max-w-full">
+      <div className="flex lg:mt-12 lg:flex-row flex-col gap-y-4 mt-[80px] items-center justify-between lg:gap-x-20 relative z-10 max-w-[77%] mobile:max-w-full">
         <div className="overflow-hidden  md:h-[478px] md:max-w-[320px] mobile:h-[355px]  mobile:w-[240px] mobile:mx-auto shadow-lg shadow-black ">
         <Image
          src={tmdbImageSrc(props.film.posterPath)}
@@ -35,7 +35,7 @@ export const TrendingHero = (props: TrendHeroProps) => {
           <span className="text-2xl text-white bg-red-600 rounded-2xl p-2 w-fit">
             {props.film.voteAverage.toFixed(1)}
           </span>
-          <div className="flex flex-row items-center my-2 text-2xl ">
+          <div className="flex flex-row items-center my-2 text-2xl gap-x-1">
             {[...Array(filledStars)].map((_, index) => (
               <FaStar key={index} className="star text-primary" />
             ))}
@@ -56,7 +56,7 @@ export const TrendingHero = (props: TrendHeroProps) => {
             
          >
        <span className="block">
-         <MdPlayCircleOutline className="md:w-20 w-16 h-auto" />
+         <MdPlayCircleOutline className="md:w-20 w-14 h-auto" />
           </span>
          <span>Play trailer</span>
           </button>

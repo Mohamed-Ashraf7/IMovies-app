@@ -46,7 +46,7 @@ export const Mail = () => {
       </div>
       <div className="flex flex-row items-center ">
         <input type="email"
-          className="w-[400px] mobile:w-[220px] p-4 text-black placeholder:text-gray-400 rounded-l-lg"
+          className="w-[400px] mobile:w-[240px] p-4  text-black placeholder:text-gray-400 rounded-l-lg"
           placeholder="E-Mail . . . " />
         <button type="reset"
           className="bg-primary rounded-r-lg text-white  px-2 py-4 shadow-md hover:bg-blue-700">

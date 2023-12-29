@@ -145,7 +145,7 @@ const FilmDetails = (props: Props) => {
         </div>
       </div>
       {/********************* Cast *****************/}
-      <Section title="Casts" hidden={casts.length === 0} className="relative -top-10 py-0">
+      <Section title="Casts" hidden={casts.length === 0} className="relative -top-14 py-0 overflow-y-auto">
         <div className="scrollbar scrollbar-thumb-primary overflow-y-auto scrollbar-track-header">
           <div className="flex items-center gap-x-1 ">
             {casts.map((cast, i) => (
@@ -160,7 +160,7 @@ const FilmDetails = (props: Props) => {
         </div>
       </Section>
       {/********************  Trailers *********************/}
-      <Section  title="Trailers" className="mobile:h-[200px] h-[300px] overflow-hidden"
+      <Section  title="Trailers" className="mobile:h-[230px] h-[300px] overflow-hidden relative -top-5 "
         hidden={trailers.length === 0}>
         <Slider   isMovieCard={true} num={3}>
           {(_) =>

@@ -91,11 +91,11 @@ const Catalog = (props: Props) => {
         title={title}></Section>
       {/* Films */}
       <Section>
-        <div className="grid lg:grid-cols-4 md:grid-cols-3 mobile:grid-cols-2 relative z-[11]">
+        <div className="grid lg:grid-cols-4 gap-2 md:grid-cols-3 mobile:grid-cols-2 relative z-[11]">
           {films.map((film, i) => (
             <div key={i}>
               <Card
-               className="mobile:h-[270px]"
+               className="mobile:h-[247px]"
                 onClick={() => navigate(`/${film.mediaType}/${film.id}`)}
                 imageSrc={tmdbImageSrc(film.posterPath)}
                 title={film.title} 
