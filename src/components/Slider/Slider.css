@@ -3,33 +3,42 @@
 
 .slick-prev {
   z-index: 10;
+  left: 5px;
 }
 .slick-next {
   z-index: 10;
-  right: -30px;
+  right: 2px;
 }
 @media (max-width: 795px) {
   .slick-prev {
-    left: -30px;
+    left: 0px;
   }
   .slick-next {
-    right: -30px;
+    right: -1px;
   }
 }
+
 .slick-hero .slick-prev {
-  left: 15px;
+  left: 20px;
+  width: 35px;
+  height: 35px;
+  background-color: transparent;
 }
 .slick-hero .slick-next {
-  right: 15px;
+  right: 20px;
+  width: 35px;
+  height: 35px;
+  background-color: transparent;
 }
 
 .slick-prev,
 .slick-next {
-  font-size: 18px;
-  width: 35px;
-  height: 35px;
+  font-size: 0px;
+  width: 40px;
+  height: 40px;
   border-radius: 10%;
   opacity: 0.8;
+  background-color: #000;
   transition: background-color 0.3s, color 0.3s;
 }
 .slick-prev:hover,

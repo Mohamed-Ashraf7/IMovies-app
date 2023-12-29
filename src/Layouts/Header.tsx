@@ -34,7 +34,7 @@ const Header = () => {
     <div
       className={` lg:backdrop-blur-sm sticky top-0 z-[99] ${
         show === "scrolled" ? "bg-black bg-opacity-[.8]" : ""}`}>
-      <Container className="flex items-center justify-between gap-2 ">
+      <Container className="mobile:px-6 flex items-center justify-between gap-2 ">
         <Link to={"/*"} className="flex items-center justify-between gap-6 ">
           <img src={logo} alt="Logo" className="h-[100%] w-[120px] rounded-sm " />
           <h1 className="text-3xl mobile:text-xl font-semibold text-white hidden lg:block">

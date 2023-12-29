@@ -21,7 +21,7 @@ const Card = (props: Props) => {
        <div
         onClick={() => (props.onClick ? props.onClick() : " ")}
         className={mergeClasses(
-          "group m-1.5  bg-transparent mobile:h-[245.5px] md:min-h-[306px] overflow-hidden cursor-pointer relative rounded-sm hover:border-b-4 hover:rounded-xl hover:border-primary transition duration-700",
+          "group m-1.5  bg-transparent mobile:h-[290px] md:min-h-[306px] overflow-hidden cursor-pointer relative rounded-sm hover:border-b-4 hover:rounded-xl hover:border-primary transition duration-700",
           props.className)}>
           {withPlay ? (
           <div
@@ -38,7 +38,7 @@ const Card = (props: Props) => {
         <Image src={props.imageSrc}></Image>
       </div>
       <p
-        className="pt-1 shadow-md text-center uppercase mobile:text-xs">
+        className="pt-1 shadow-md text-center uppercase mobile:text-sm">
         {props.title?.slice(0,20)}{" "}
       </p>
       <div className="flex items-center mt-1 justify-between flex-row px-5">

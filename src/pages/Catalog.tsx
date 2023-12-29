@@ -23,7 +23,6 @@ const Catalog = (props: Props) => {
   const totalPage = useRef(2);
   const loadingRef = useRef(false);
   const { theme } = useTheme();
-  const [onLoading, setOnLoading] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   // const { listTitle } = useParams<any>();
@@ -46,10 +45,8 @@ const Catalog = (props: Props) => {
   }
   const fetch = async () => {
     loadingRef.current = true;
-    setOnLoading(true);
-    const { films, totalPages } = await request(page.current);
-    setOnLoading(false);
-    loadingRef.current = false;
+       const { films, totalPages } = await request(page.current);
+       loadingRef.current = false;
     totalPage.current = totalPages;
     setFilms((arrs) => [...arrs, ...films]);
   };
@@ -86,7 +83,7 @@ const Catalog = (props: Props) => {
           backgroundPosition: "center 60%",}}>
         <h2 className="text-5xl bg-opacity-10 mobile:text-2xl p-2 bg-white rounded-md text-white">
           {" "}
-          Take Me To Away with Movies . . .{" "}
+          Take Me Away with Movies . . .{" "}
         </h2>
       </div>
       <Section
@@ -98,10 +95,11 @@ const Catalog = (props: Props) => {
           {films.map((film, i) => (
             <div key={i}>
               <Card
+               className="mobile:h-[270px]"
                 onClick={() => navigate(`/${film.mediaType}/${film.id}`)}
                 imageSrc={tmdbImageSrc(film.posterPath)}
                 title={film.title} 
-                release={film.releaseDate}
+                release={film.releaseDate ? film.releaseDate:film.firstAir}
                 vote={film.voteAverage}
                 key={i}></Card>
             </div>

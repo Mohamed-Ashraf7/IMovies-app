@@ -16,14 +16,15 @@ const TopRated = ({detailPage}:DetailPage) => {
         <Slider isMovieCard={true} num={5}>
           {(_) =>
             topRatedTv.map((film, i) => (
-              <Card className="md:h-[350px]" onClick={() => detailPage(film)}
-                title={film.title}  release={film.releaseDate}
+              <Card className="md:h-[370px]" onClick={() => detailPage(film)}
+                title={film.title} release={film.firstAir}
+                vote={film.voteAverage}
                 imageSrc={tmdbImageSrc(film.posterPath)}
                 key={i}
               ></Card>))}
         </Slider>
       </Section>
-      <div className="flex w-full  border-black flex-col-reverse items-center justify-center pt-3 lg:flex-row ">
+      <div className="overflow-hidden flex border-black flex-col-reverse items-center justify-center pt-3 lg:flex-row ">
         <LatestMovies />
       </div>
       {/* to rated movies*/}
@@ -31,7 +32,7 @@ const TopRated = ({detailPage}:DetailPage) => {
         <Slider isMovieCard={true} num={4}>
           {(_) =>
             topRatedMovie.map((film, i) => (
-              <Card className="md:h-[430px]" vote={film.voteAverage}
+              <Card className="md:h-[440px]" vote={film.voteAverage}
                 onClick={() => detailPage(film)}
                 title={film.title} release={film.releaseDate}
                 imageSrc={tmdbImageSrc(film.posterPath)}

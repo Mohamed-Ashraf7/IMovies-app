@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+
 import Slider from "../../components/Slider/Slider";
 import Card from "../../components/Card";
 import Section from "../../components/Section";
@@ -9,7 +9,7 @@ const Actors = () => {
   const { Actor } = useMovieContext();
 
   return (
-    <Fragment>
+    
       <Section title="Top Actors Per Day " hidden={!Actor || Actor.length === 0}>
         {Actor && Actor.length > 0 && (
           <Slider isMovieCard={true} num={6}>
@@ -25,7 +25,7 @@ const Actors = () => {
           </Slider>
         )}
       </Section>
-    </Fragment>
+    
   );
 };
 

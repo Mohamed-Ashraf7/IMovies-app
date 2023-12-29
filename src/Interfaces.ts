@@ -33,6 +33,7 @@ export interface Film {
   description: string;
   overview: string;
   releaseDate: string;
+  firstAir: string;
   runtime: number;
   status: string;
   voteAverage: number;
@@ -111,7 +112,9 @@ export interface TrendHeroProps {
   onClick: () => void;
   onPlayTrailer: () => void;
   voteAverage: number; 
-  maxStars: number; }
+  maxStars: number;
+  
+  };
 export type LayoutTypes = {
   name: [name: string, setName: React.Dispatch<React.SetStateAction<string>>];
 };

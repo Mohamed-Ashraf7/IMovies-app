@@ -73,7 +73,7 @@ const getActors = async (): Promise<Actors[]> => {
   return [];
 };
 
- const getPopulars = async (mediaType: MediaType,page = 1): Promise<Film[]> => {
+ const getPopulars = async (mediaType: MediaType,page = 2): Promise<Film[]> => {
   try {
     const { data } = await axiosClient.get< any,AxiosResponse<{
         results: unknown[];}>>(`/${mediaType}/popular`, {

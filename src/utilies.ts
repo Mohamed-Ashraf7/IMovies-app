@@ -11,6 +11,7 @@ export const formatResult = (obj: any, mediaType?: MediaType): Film => {
     description: obj.overview,
     coverPath: obj.backdrop_path,
     posterPath: obj.poster_path,
+    firstAir:obj.first_air_date,
     overview: obj.overview,
     tagline: obj.tagline,
     releaseDate: obj.release_date,

@@ -13,7 +13,7 @@ const Popular = ({ detailPage}:DetailPage) => {
         <Slider isMovieCard={true} num={3} >
           {(_) =>
             populars.map((film, i) => (
-              <Card className="md:h-[440px] " vote={film.voteAverage}
+              <Card className="md:h-[460px] " vote={film.voteAverage}
                 onClick={() => detailPage(film)}  title={film.title}
                release={film.releaseDate}
                 imageSrc={tmdbImageSrc(film.posterPath)}

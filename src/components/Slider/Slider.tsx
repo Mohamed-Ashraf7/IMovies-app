@@ -21,12 +21,11 @@ export const Slider = (props: Props) => {
       autoplay:false,
       autoplaySpeed: 3000,
       cssEase: "linear",
-      pauseOnHover: false,
       infinite: true,
       swipe: true,
       slidesToShow: props.num,
       slidesToScroll: 1,
-      responsive: [
+       responsive: [
         {
           breakpoint: 1024,
           settings: {
@@ -37,7 +36,7 @@ export const Slider = (props: Props) => {
         {
           breakpoint: 480,
           settings: {
-            slidesToShow: 2,
+            slidesToShow: 1.65,
             slidesToScroll: 1,
           },
         },

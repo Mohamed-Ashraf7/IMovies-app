@@ -74,12 +74,12 @@ const FilmDetails = (props: Props) => {
   return (
     <div
       className={`${
-        theme === "light" ? "bg-dark text-light" : "bg-light text-dark"}`}>
+        theme === "light" ? "bg-dark text-light" : "bg-light text-dark"} `}>
       {trailerSrc && (
         <TrailerModal onHide={closeTrailer} src={trailerSrc}></TrailerModal>
       )}
       {/************ background ***********/}
-      <div className="min-h-screen relative centerd -top-[88px]">
+      <div className="min-h-screen relative centerd -top-[88px] overflow-x-hidden">
       <div className="absolute left-0 top-0 right-0 bottom-0 w-full">
         <div className="overlay-slick-hero"></div>
         <Image
@@ -89,13 +89,13 @@ const FilmDetails = (props: Props) => {
         <div className="overlay-film-cover"></div>
       </div>
         {/************ poster and text *****************/}
-        <div className="flex w-full  lg:flex-row flex-col md:top-10  items-center justify-evenly mobile:justify-center relative z-10 px-2 mobile:px-0">
+        <div className="flex w-full  lg:flex-row flex-col md:top-10  items-center justify-evenly mobile:justify-center relative z-10 px-2 mobile:px-0 overflow-hidden">
           {" "}
           <Image
             src={tmdbImageSrc(film.posterPath)}
-            className="max-w-[350px] mobile:w-[50%] h-[300px] mobile:h-full  mobile:mt-[4.6rem] mobile:mx-auto shadow-xl shadow-neutral-700 "
+            className="max-w-[350px] mobile:w-[50%] h-[300px] mobile:h-full  mobile:mt-[90px] mobile:mx-auto shadow-xl shadow-neutral-700 "
           ></Image>
-          <div className="px-10 py-4  mobile:px-2 mobile:mx-0 flex flex-col items-start gap-y-3 mobile:border-none rounded-3xl  ">
+          <div className="px-10 py-4  mobile:px-3 mobile:mx-0 flex flex-col items-start gap-y-3 mobile:border-none rounded-3xl  ">
             <p className="text-5xl md:max-w-[700px] w-full text-nowrap tracking-wide font-extrabold bg-gradient-to-r from-white via-orange-400 to-gray-400 bg-clip-text my-1 line-clamp-2 mobile:text-2xl">
               {film.title}
             </p>
