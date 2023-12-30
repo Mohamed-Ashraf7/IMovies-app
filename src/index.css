@@ -114,6 +114,6 @@ body {
   mobile:px-5;
   }
   .mobileNav {
-    @apply mobile:fixed mobile:rounded-[10px] mobile:border-t-2  mobile:py-2 mobile:bg-header border-primary mobile:bottom-0 mobile:left-0 mobile:right-0;
+    @apply mobile:fixed mobile:rounded-[10px] mobile:border-t-2  mobile:py-3 mobile:bg-header border-primary mobile:bottom-0 mobile:left-0 mobile:right-0;
   }
 }

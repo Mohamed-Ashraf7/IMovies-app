@@ -37,7 +37,7 @@ const Catalog = (props: Props) => {
       request = (page: number) => discover("tv", page);
       break;
     case "search":
-      title = `Search results for <i>${params.get("q")}</i>`;
+      title = `Results for <i>${params.get("q")}</i>`;
       request = (page: number) => search(params.get("q") || "", page);
       break;
     default:
@@ -91,11 +91,11 @@ const Catalog = (props: Props) => {
         title={title}></Section>
       {/* Films */}
       <Section>
-        <div className="grid lg:grid-cols-4 gap-2 md:grid-cols-3 mobile:grid-cols-2 relative z-[11]">
+        <div className="grid lg:grid-cols-4 gap-1 md:grid-cols-3 mobile:grid-cols-2 relative z-[11]">
           {films.map((film, i) => (
             <div key={i}>
               <Card
-               className="mobile:h-[247px]"
+               className="mobile:h-[244px]"
                 onClick={() => navigate(`/${film.mediaType}/${film.id}`)}
                 imageSrc={tmdbImageSrc(film.posterPath)}
                 title={film.title} 

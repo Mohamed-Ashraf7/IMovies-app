@@ -13,7 +13,7 @@ export function Nav() {
         <span> IMovies</span>
       </Link>
       <div
-        className="centerd w-full mobileNav mobile:gap-6 ">
+        className="centerd w-full mobile:py-2 mobileNav mobile:gap-6 ">
         <div className="hidden w-full xl:centerd">
           <span  
             className="text-lg font-bold">

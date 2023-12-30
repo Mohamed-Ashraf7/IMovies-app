@@ -48,18 +48,18 @@ const Landing = () => {
           </div>
         </div>
       </div>
-      <div className="centerd h-auto  mobile:flex-col-reverse gap-x-20 bg-header py-12 px-7">
+      <div className="centerd h-auto  mobile:flex-col-reverse gap-x-20 bg-header py-12 px-5">
         <div className="flex flex-col justify-center gap-y-5">
           <p className=" text-center text-2xl font-extrabold xl:text-4xl">
             Watch Anywhere , Anytime
           </p>
-          <p className="px-2 max-w-xl text-justify mobile:text-center text-base lg:text-xl">
+          <p className="px-4 max-w-xl text-justify mobile:text-center text-base lg:text-xl">
             Our website is optimized for viewing on all your devices. Whether
             you're on your desktop, laptop, tablet, or smartphone, you can enjoy
             the latest movies and trailers on-the-go 
           </p>
         </div>
-        <div className="h-auto w-auto px-2">
+        <div className="h-auto w-auto px-4">
           <LazyLoadImage src={bg} alt="Watching"
             className="mobile:mb-4 h-auto w-full border-[5px] border-black shadow-2xl shadow-black lg:w-[420px]"
           />
